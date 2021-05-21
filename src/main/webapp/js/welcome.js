@@ -81,8 +81,7 @@ function applyRotation() {
  angle=(document.getElementById("rotate_label").innerHTML)*0.01745; 
  myc=document.getElementById("myCanvas");
  var surfaceContext= document.getElementById("myCanvas").getContext("2d");
- surfaceContext.fillStyle="#ffffff";
- surfaceContext.fillRect(0,0,myc.width,myc.height);
+ 
  surfaceContext.save();
 surfaceContext.translate(SessionImage.width*0.5,SessionImage.height*0.5);
 surfaceContext.rotate(angle);
