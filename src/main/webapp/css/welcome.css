@@ -186,3 +186,34 @@ canvas
 
   margin-left : 40%;
 }
+
+.canvas_span
+{
+  height: 40%;
+  width: 30%;
+  margin-left: 20%;
+}
+
+/*vignette*/
+.vignette{
+  display: block;
+}
+.vignette::after
+{
+  content:" ";
+  position: absolute;
+
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  width: 100%;
+  height: 100%;
+  background:radial-gradient(circle,transparent 30%, black 150%)
+  
+}
+/* removing shadow on hover
+for demonstration purposes */
+.vignette-radial:hover:after {
+  background: none;
+}
