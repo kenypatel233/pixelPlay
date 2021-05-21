@@ -90,27 +90,27 @@ surfaceContext.drawImage(SessionImage,0,0);
 //surfaceContext.restore();
 }
 
-function mySection()
-{
-  console.log("inside callwedscfsr");
-  document.getElementById("vignette").className.replace("","active");
-  var section= document.getElementById("vignette_section");
-if (section.style.display == 'none') {
-  section.style.display = 'block';
-} else {
-  section.style.display = 'none';
-}
 
-}
+
+
 function applyVignette()
 {
   console.log("called2");	
-  let target=document.getElementById("canvasDiv");
-
+  let target=document.getElementById("myCanvas");
+  var effect = {
+    vignette: 0.6,
+    sepia: false
+};
+var options = {
+  onError: function() {
+      alert('Error in applying vignette!');
+  }
+};
+new vintagejs(target,options,effect);
   
   
   
-  target.classList.add("vignette");
+  //target.classList.add("vignette");
   
 
 
