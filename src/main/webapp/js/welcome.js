@@ -1,6 +1,3 @@
-
-
-var SessionImage;
 /*=========UPLOADING IMAGE TO CANVAS ELEMENT=============*/
 var onload=function(e){
 let imgInput = document.getElementById('imageInput');

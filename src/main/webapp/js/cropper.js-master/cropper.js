@@ -19,6 +19,17 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+function myFunction() {
+	  var x = document.getElementById("cropp");
+	  if (x.style.display === "none") {
+	    x.style.display = "block";
+	  } else {
+	    x.style.display = "none";
+	  }
+}
+
+
 (function(cropper, undefined) {
 	"use strict"; // helps us catch otherwise tricky bugs
 
