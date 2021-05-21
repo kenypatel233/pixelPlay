@@ -127,11 +127,9 @@ SessionImage.src=myc.toDataURL("image/jpeg",0.75);
 
 
   
-
-
 function brightness() {
   console.log("called brightness");
-  document.getElementById("brightness").className.replace("","active");
+  document.getElementById("rangeBrightness").className.replace("","active");
   var section= document.getElementById("brightness_section");
   if (section.style.display == 'none') {
     section.style.display = 'block';
@@ -141,15 +139,46 @@ function brightness() {
 }
 
 function applyBrightness() {
-  rangeInput = document.getElementById('range');
+  rangeInput = document.getElementById('rangeBrightness');
   container = document.getElementById('myCanvas');
-  // rangeInput.addEventListener("onclick",function() {
   container.style.filter = "brightness(" + rangeInput.value + "%)";
-  // })
-  ctx=container.getContext("2d");
-  SessionImage.src=container.toDataURL("image/jpeg");
 }
 
+function contrast() {
+  console.log("called brightness");
+  document.getElementById("rangeContrast").className.replace("","active");
+  var section= document.getElementById("contrast_section");
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+function applyContrast() {
+  rangeInput = document.getElementById('rangeContrast');
+  container = document.getElementById('myCanvas');
+  container.style.filter = "contrast(" + rangeInput.value + "%)";
+}
+
+function saturation() {
+  console.log("called brightness");
+  document.getElementById("rangeSaturation").className.replace("","active");
+  var section= document.getElementById("saturation_section");
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+
+
+function applySaturation() {
+  rangeInput = document.getElementById('rangeSaturation');
+  container = document.getElementById('myCanvas');
+  container.style.filter = "saturate(" + rangeInput.value + "%)";
+}
 /*==Download===*/
 function downloadCanvas(){  
   // get canvas data  
@@ -166,3 +195,53 @@ function downloadCanvas(){
   tmpLink.click();  
   document.body.removeChild( tmpLink );  
 }
+
+
+
+
+
+
+
+
+
+
+// ======================== VIGNETTE ========================
+
+// function mySection()
+// {
+//   console.log("inside callwedscfsr");
+//   document.getElementById("vignette").className.replace("","active");
+//   var section= document.getElementById("vignette_section");
+// if (section.style.display == 'none') {
+//   section.style.display = 'block';
+// } else {
+//   section.style.display = 'none';
+// }
+// }
+
+// function applyVignette()
+// {
+//   var container = document.getElementById('myCanvas');
+//   container.classList.add('vignette_on');
+
+//   console.log("called2");	
+//   let target=document.getElementById("canvasDiv");
+  
+//   target.classList.add("vignette");
+// }
+
+// function myVignette()
+// {
+//   console.log("inside");
+//   console.log("inside callwedscfsr");
+//   document.getElementById("vignette").className.replace("","active");
+//   var section= document.getElementById("vignette_section");
+// if (section.style.display == 'none') {
+//   section.style.display = 'block';
+// } else {
+//   section.style.display = 'none';
+// }
+// }
+
+
+
