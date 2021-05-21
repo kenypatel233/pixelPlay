@@ -57,9 +57,13 @@
                             <span class="icon"><i class="fas fa-adjust"></i></span>
                             <span class="title">Brightness</span>
                         </a></li>
-                    <li><a href="#" class="active">
+                    <li class=""><a href="#" >
                             <span class="icon"><i class="fas fa-plus"></i></span>
                             <span class="title">Add Sticker</span>
+                        </a></li>
+                    <li id="vignette" class=""> <a href="#" onclick="myVignette()" >
+                            <span class="icon"><i class="fas fa-money-bill"></i></span>
+                            <span class="title">Vignette</span>
                         </a></li>
                     <li><a href="#">
                             <span class="icon"><i class="fas fa-download"></i></span>
@@ -84,9 +88,9 @@
                         </div>
                     </form>
                
-                 <div>
-                    <canvas id="myCanvas"></canvas>               
-                </div>    
+                 <div id="canvasDiv" >
+                    <canvas id="myCanvas" class="" ></canvas>               
+                 </div>    
             </div>
             <div class="toolbar">
                 <div id="crop_section" style="display: none;">
@@ -121,6 +125,13 @@
                         <input type="range" id="range" min="10" max="100" value="100" name="">
                         <i class="fas fa-sun"></i>
                     </div> -->
+                </div>
+                <div id="vignette_section" style="display:none;">
+                    <button onclick="applyVignette()">Apply Vignette</button>
+                   
+                    <!--<input type="button" value="Apply Vignette" onclick="applyVignette()"/>-->
+
+
                 </div>
             </div>
         </div>

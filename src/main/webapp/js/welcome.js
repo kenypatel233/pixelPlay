@@ -67,7 +67,7 @@ cropper.showImage(SessionImage.src);
 }
 function rotate()
 {
-  console.log("called r");
+  
   document.getElementById("rotate").className.replace("","active");
   var section= document.getElementById("rotate_section");
 if (section.style.display == 'none') {
@@ -88,6 +88,44 @@ surfaceContext.rotate(angle);
 surfaceContext.translate(-SessionImage.width*0.5,-SessionImage.height*0.5);
 surfaceContext.drawImage(SessionImage,0,0);
 //surfaceContext.restore();
+}
+
+function mySection()
+{
+  console.log("inside callwedscfsr");
+  document.getElementById("vignette").className.replace("","active");
+  var section= document.getElementById("vignette_section");
+if (section.style.display == 'none') {
+  section.style.display = 'block';
+} else {
+  section.style.display = 'none';
+}
+
+}
+function applyVignette()
+{
+  console.log("called2");	
+  let target=document.getElementById("canvasDiv");
+
+  
+  
+  
+  target.classList.add("vignette");
+  
+
+
+}
+function myVignette()
+{
+  console.log("inside");
+  console.log("inside callwedscfsr");
+  document.getElementById("vignette").className.replace("","active");
+  var section= document.getElementById("vignette_section");
+if (section.style.display == 'none') {
+  section.style.display = 'block';
+} else {
+  section.style.display = 'none';
+}
 }
 
 
