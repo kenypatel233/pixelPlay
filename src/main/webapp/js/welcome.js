@@ -91,4 +91,24 @@ surfaceContext.drawImage(SessionImage,0,0);
 }
 
 
+function brightness() {
+  console.log("called brightness");
+  document.getElementById("brightness").className.replace("","active");
+  var section= document.getElementById("brightness_section");
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+function applyBrightness() {
+  rangeInput = document.getElementById('range');
+  container = document.getElementById('myCanvas');
+  // rangeInput.addEventListener("onclick",function() {
+  container.style.filter = "brightness(" + rangeInput.value + "%)";
+  // })
+}
+
+
 

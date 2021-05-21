@@ -53,9 +53,9 @@
                             <span class="icon"><i class="fas fa-sync"></i></span>
                             <span class="title">Rotate</span>
                         </a></li>
-                    <li><a href="#">
-                            <span class="icon"><i class="fas fa-edit"></i></span>
-                            <span class="title">Edit</span>
+                    <li id="brightness" class=""><a href="#" onclick="brightness()">
+                            <span class="icon"><i class="fas fa-adjust"></i></span>
+                            <span class="title">Brightness</span>
                         </a></li>
                     <li><a href="#" class="active">
                             <span class="icon"><i class="fas fa-plus"></i></span>
@@ -69,7 +69,7 @@
                 </ul>
             </div>
         
-            <div class="main_container">
+            <div class="main_container" id="abcdefgh">
                 <h1>Welcome</h1>
               
                 <!-- <img id="output" width="175" /> -->
@@ -104,7 +104,23 @@
                         <label id="rotate_label" style="padding-left:20px;"></label>
                         <input type="button" value="Apply" onclick="applyRotation()"/>
                     </form>
-
+                </div>
+                <div id="brightness_section" style="display: none;">
+                    <form id="brightness_form" name="brightness_form">
+                        <label style="padding-right:20px;">Brightness:</label>
+                        <input type="range" id="range" value="180" min="0" max="360"
+                            oninput="document.getElementById('brightness_label').innerHTML = this.value" />
+                        <label id="brightness_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applyBrightness()" />
+                    </form>
+                    
+                    
+                    
+                    <!-- <div class="brightness-box">
+                        <i class="far- far-sun"></i>
+                        <input type="range" id="range" min="10" max="100" value="100" name="">
+                        <i class="fas fa-sun"></i>
+                    </div> -->
                 </div>
             </div>
         </div>
