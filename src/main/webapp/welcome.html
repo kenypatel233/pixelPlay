@@ -9,6 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
         <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="./js/cropper.js-master/cropper_jsmin.js"></script>
         <script src="./js/welcome.js"></script>
         
         <script>
@@ -45,7 +46,7 @@
         
             <div class="sidebar">
                 <ul>
-                    <li><a href="#">
+                    <li id="crop" class=""  ><a href="#" onclick="crop()">
                             <span class="icon"><i class="fas fa-crop"></i></span>
                             <span class="title">Crop</span></a></li>
                     <li><a href="#">
@@ -85,8 +86,19 @@
                 <!--<img id="output" width="175" />-->
                 <div>
                     <canvas id="myCanvas"></canvas>               
+                </div>    
+            </div>
+            <div class="toolbar">
+                <div id="crop_section" style="display: none;">
+                    <input type="button" onclick="cropper.startCropping()" value="Start cropping">
+                    <input type="button" onclick="cropper.getCroppedImageSrc()" value="Crop">
+                    <input type="button" onclick="cropper.restore()" value="Restore">
+
+                </div>
             </div>
         </div>
+        
+
         <!-- ===== MAIN JS ===== -->
         <script src="./js/auth.js"></script>
         

@@ -10,11 +10,11 @@ let imgInput = document.getElementById('imageInput');
       var reader = new FileReader();
       reader.readAsDataURL(imageFile);
       reader.onloadend = function (e) {
-        var myImage = new Image(); // Creates image object
+       let myImage = new Image(); // Creates image object
         myImage.src = e.target.result; // Assigns converted image to image object
         myImage.onload = function(ev) {
           var myCanvas = document.getElementById("myCanvas"); // Creates a canvas object
-          var myContext = myCanvas.getContext("2d"); // Creates a contect object
+          let myContext = myCanvas.getContext("2d"); // Creates a contect object
           myCanvas.width = myImage.width; // Assigns image's width to canvas
           myCanvas.height = myImage.height; // Assigns image's height to canvas
           myContext.drawImage(myImage,0,0); // Draws the image on canvas
@@ -46,3 +46,22 @@ console.log("end");
  event.preventDefault();
   
 });
+/*=========CROP IMAGE======*/
+function crop() 
+{
+  document.getElementById("crop").className.replace("","active");
+  var section= document.getElementById("crop_section");
+if (section.style.display == 'none') {
+  section.style.display = 'block';
+} else {
+  section.style.display = 'none';
+}
+
+// initialize cropper by providing it with a target canvas and a XY ratio (height = width * ratio)
+cropper.start(document.getElementById("myCanvas"), 1); 
+  
+}
+
+
+
+
