@@ -1,6 +1,6 @@
 
 
-
+var SessionImage;
 /*=========UPLOADING IMAGE TO CANVAS ELEMENT=============*/
 var onload=function(e){
 let imgInput = document.getElementById('imageInput');
@@ -19,6 +19,7 @@ let imgInput = document.getElementById('imageInput');
           myCanvas.height = myImage.height; // Assigns image's height to canvas
           myContext.drawImage(myImage,0,0); // Draws the image on canvas
           let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
+          SessionImage.src=myImage.src;
         }
       }
     }
@@ -49,6 +50,7 @@ console.log("end");
 /*=========CROP IMAGE======*/
 function crop() 
 {
+  console.log("called");
   document.getElementById("crop").className.replace("","active");
   var section= document.getElementById("crop_section");
 if (section.style.display == 'none') {
@@ -61,7 +63,15 @@ if (section.style.display == 'none') {
 cropper.start(document.getElementById("myCanvas"), 1); 
   
 }
-
-
-
+function rotate()
+{
+  console.log("called r");
+  document.getElementById("rotate").className.replace("","active");
+  var section= document.getElementById("rotate_section");
+if (section.style.display == 'none') {
+  section.style.display = 'block';
+} else {
+  section.style.display = 'none';
+}
+}
 

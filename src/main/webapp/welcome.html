@@ -46,10 +46,10 @@
         
             <div class="sidebar">
                 <ul>
-                    <li id="crop" class=""  ><a href="#" onclick="crop()">
+                    <li id="crop" class="" ><a href="#" onclick="crop()">
                             <span class="icon"><i class="fas fa-crop"></i></span>
                             <span class="title">Crop</span></a></li>
-                    <li><a href="#">
+                    <li id="rotate" class=""><a href="#" onclick="rotate()">
                             <span class="icon"><i class="fas fa-sync"></i></span>
                             <span class="title">Rotate</span>
                         </a></li>
@@ -83,7 +83,7 @@
                             
                         </div>
                     </form>
-                <!--<img id="output" width="175" />-->
+                <img id="output" style="display: none;">-->
                 <div>
                     <canvas id="myCanvas"></canvas>               
                 </div>    
@@ -93,6 +93,16 @@
                     <input type="button" onclick="cropper.startCropping()" value="Start cropping">
                     <input type="button" onclick="cropper.getCroppedImageSrc()" value="Crop">
                     <input type="button" onclick="cropper.restore()" value="Restore">
+
+                </div>
+                <div id="rotate_section" style="display: none;">
+                    <form id="rotate_form" name="rotate_form"  >
+                        <label style="padding-right:20px;">Rotate(deg):</label>
+                        <input type="range" id="fromPrice" value="180" min="0" max="360"
+                            oninput="document.getElementById('rotate_label').innerHTML = this.value" />
+                        <label id="rotate_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applyRotation()"/>
+                    </form>
 
                 </div>
             </div>
