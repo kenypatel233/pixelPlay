@@ -54,17 +54,25 @@
                             <span class="title">Rotate</span>
                         </a></li>
                     <li id="brightness" class=""><a href="#" onclick="brightness()">
-                            <span class="icon"><i class="fas fa-adjust"></i></span>
+                            <span class="icon"><i class="fas fa-lightbulb"></i></span>
                             <span class="title">Brightness</span>
                         </a></li>
-                    <li class=""><a href="#" >
+                    <li id="contrast" class=""><a href="#" onclick="contrast()">
+                            <span class="icon"><i class="fas fa-adjust"></i></span>
+                            <span class="title">Contrast</span>
+                        </a></li>
+                    <li id="saturation" class=""><a href="#" onclick="saturation()">
+                            <span class="icon"><i class="fas fa-spinner"></i></span>
+                            <span class="title">Saturation</span>
+                        </a></li>
+                    <li class=""><a href="#">
                             <span class="icon"><i class="fas fa-plus"></i></span>
                             <span class="title">Add Sticker</span>
                         </a></li>
-                    <li id="vignette" class=""> <a href="#" onclick="myVignette()" >
+                    <!-- <li id="vignette" class=""> <a href="#" onclick="myVignette()" >
                             <span class="icon"><i class="fas fa-money-bill"></i></span>
                             <span class="title">Vignette</span>
-                        </a></li>
+                        </a></li> -->
                     <li><a href="#">
                             <span class="icon"><i class="fas fa-download"></i></span>
                             <span class="title">Download</span>
@@ -73,7 +81,7 @@
                 </ul>
             </div>
         
-            <div class="main_container" id="abcdefgh">
+            <div class="main_container">
                 <h1>Welcome</h1>
               
                 <!-- <img id="output" width="175" /> -->
@@ -112,27 +120,39 @@
                 <div id="brightness_section" style="display: none;">
                     <form id="brightness_form" name="brightness_form">
                         <label style="padding-right:20px;">Brightness:</label>
-                        <input type="range" id="range" value="180" min="0" max="360"
+                        <input type="range" id="rangeBrightness" value="180" min="0" max="360"
                             oninput="document.getElementById('brightness_label').innerHTML = this.value" />
                         <label id="brightness_label" style="padding-left:20px;"></label>
                         <input type="button" value="Apply" onclick="applyBrightness()" />
                     </form>
-                    
-                    
-                    
-                    <!-- <div class="brightness-box">
-                        <i class="far- far-sun"></i>
-                        <input type="range" id="range" min="10" max="100" value="100" name="">
-                        <i class="fas fa-sun"></i>
-                    </div> -->
                 </div>
-                <div id="vignette_section" style="display:none;">
+                <div id="contrast_section" style="display: none;">
+                    <form id="contrast_form" name="contrast_form">
+                        <label style="padding-right:20px;">Contast:</label>
+                        <input type="range" id="rangeContrast" value="180" min="0" max="360"
+                            oninput="document.getElementById('contrast_label').innerHTML = this.value" />
+                        <label id="contrast_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applyContrast()" />
+                    </form>
+                </div>
+                <div id="saturation_section" style="display: none;">
+                    <form id="saturation_form" name="saturation_form">
+                        <label style="padding-right:20px;">Saturation:</label>
+                        <input type="range" id="rangeSaturation" value="180" min="0" max="360"
+                            oninput="document.getElementById('saturation_label').innerHTML = this.value" />
+                        <label id="saturation_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applySaturation()" />
+                    </form>
+                </div>
+                
+
+                <!-- ===== VIGNETTE ===== -->
+                <!-- <div id="vignette_section" class="" style="display:none;">
                     <button onclick="applyVignette()">Apply Vignette</button>
-                   
-                    <!--<input type="button" value="Apply Vignette" onclick="applyVignette()"/>-->
-
-
-                </div>
+                    
+                    
+                </div> -->
+                <!--<input type="button" value="Apply Vignette" onclick="applyVignette()"/>-->
             </div>
         </div>
         
