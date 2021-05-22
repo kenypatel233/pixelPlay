@@ -62,8 +62,16 @@
                             <span class="title">Contrast</span>
                         </a></li>
                     <li id="saturation" class=""><a href="#" onclick="saturation()">
-                            <span class="icon"><i class="fas fa-spinner"></i></span>
+                            <span class="icon"><i class="fas fa-fill"></i></span>
                             <span class="title">Saturation</span>
+                        </a></li>
+                    <li id="opacity" class=""><a href="#" onclick="opacity()">
+                            <span class="icon"><i class="fas fa-spinner"></i></span>
+                            <span class="title">Opacity</span>
+                        </a></li>
+                    <li id="blur" class=""><a href="#" onclick="blur()">
+                            <span class="icon"><i class="fas fa-tint"></i></span>
+                            <span class="title">Blur</span>
                         </a></li>
                     <li class=""><a href="#">
                             <span class="icon"><i class="fas fa-plus"></i></span>
@@ -96,9 +104,9 @@
                         </div>
                     </form>
                
-                 <div id="canvasDiv" >
+                <div id="canvasDiv" >
                     <canvas id="myCanvas" class="" ></canvas>               
-                 </div>    
+                </div>    
             </div>
             <div class="toolbar">
                 <div id="crop_section" style="display: none;">
@@ -142,6 +150,24 @@
                             oninput="document.getElementById('saturation_label').innerHTML = this.value" />
                         <label id="saturation_label" style="padding-left:20px;"></label>
                         <input type="button" value="Apply" onclick="applySaturation()" />
+                    </form>
+                </div>
+                <div id="opacity_section" style="display: none;">
+                    <form id="opacity_form" name="opacity_form">
+                        <label style="padding-right:20px;">Opacity:</label>
+                        <input type="range" id="rangeOpacity" value="50" min="0" max="100"
+                            oninput="document.getElementById('opacity_label').innerHTML = this.value" />
+                        <label id="opacity_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applyOpacity()" />
+                    </form>
+                </div>
+                <div id="blur_section" style="display: none;">
+                    <form id="blur_form" name="blur_form">
+                        <label style="padding-right:20px;">Blur:</label>
+                        <input type="range" id="rangeBlur" value="5" min="0" max="10"
+                            oninput="document.getElementById('blur_label').innerHTML = this.value" />
+                        <label id="blur_label" style="padding-left:20px;"></label>
+                        <input type="button" value="Apply" onclick="applyBlur()" />
                     </form>
                 </div>
                 
