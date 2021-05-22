@@ -166,65 +166,41 @@
                                     <h2>ADD PRESET </h2>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <label style="padding-right:20px;">Brightness:</label>
-                                                    <input type="range" id="rangeBrightness" value="180" min="0" max="360"
-                                                        oninput="document.getElementById('brightness_labell').innerHTML = this.value" />
-                                            
-                                                </td>
-                                                <td>
-                                                    <br>
-                                                    <label id="brightness_labell" style="padding-left:20px;"></label>
-                                            
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label style="padding-right:20px;">Contast:</label>
-                                                    <input type="range" id="rangeContrast" value="180" min="0" max="360"
-                                                        oninput="document.getElementById('contrast_labell').innerHTML = this.value" />
-                                            
-                                                </td>
-                                                <td>
-                                                    <br>
-                                                    <label id="contrast_labell" style="padding-left:20px;"></label>
-                                            
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label style="padding-right:20px;">Saturation:</label>
-                                                    <input type="range" id="rangeSaturation" value="180" min="0" max="360"
-                                                        oninput="document.getElementById('saturation_labell').innerHTML = this.value" />
-                                                </td>
-                                                <td>
-                                                    <br>
-                                                    <label id="saturation_labell" style="padding-left:20px;"></label>
-                                            
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label style="padding-right:20px;">Temperature:</label>
-                                                    <input type="range" id="rangeTemperature" value="180" min="0" max="360"
-                                                        oninput="document.getElementById('temp_labell').innerHTML = this.value" />
-                                                  
-                                                </td>
-                                                <td>
-                                                    <br>
-                                                    <label id="temp_labell" style="padding-left:20px;"></label>
-                                            
-                                                </td>
-                                            </tr>
-                                            
-                                            
-
-
+                                    <form id="preset_form" action="addPreset" method="POST" >
                                         
-                                        </table>   
+                                                    <label style="padding-right:20px;">Brightness:</label>
+                                                    <input type="range" id="rangeBrightnesss" name="rangeBrightnesss" value="180" min="0" max="360"
+                                                        oninput="document.getElementById('brightness_labell').innerHTML = this.value" />
+                                                                                         
+                                                      <label id="brightness_labell" style="padding-left:20px;"></label>
+                                                      <br>
+
+                                             
+                                                    <label style="padding-right:20px;">Contast:</label>
+                                                    <input type="range" id="rangeContrastt" name="rangeContrastt" value="180" min="0" max="360"
+                                                        oninput="document.getElementById('contrast_labell').innerHTML = this.value" />
+                                                    <br>
+                                               
+                                                    <label id="contrast_labell" style="padding-left:20px;"></label>
+                                                    <br>
+                                           
+                                                    <label style="padding-right:20px;">Saturation:</label>
+                                                    <input type="range" id="rangeSaturationn" name="rangeSaturationn" value="180" min="0" max="360"
+                                                        oninput="document.getElementById('saturation_labell').innerHTML = this.value" />
+                                                
+                                                    <label id="saturation_labell" style="padding-left:20px;"></label>
+                                                    <br>
+                                            
+                                                    <label style="padding-right:20px;">Opacity:</label>
+                                                    <input type="range" id="rangeOpacityy" name="rangeOpacityy" value="180" min="0" max="360"
+                                                        oninput="document.getElementById('opa_labell').innerHTML = this.value" />                                             
+                                                    <label id="opa_labell" style="padding-left:20px;"></label>
+                                                    <br>
+
+                                                    <label style="padding-right:20px;">Enter preset name</label>
+                                                    <input type="text" name="presetName" id="presetName" />
+                                            
+                                              
                                         <input type="submit" value="Add preset"/>
                                         
                                         
