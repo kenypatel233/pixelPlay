@@ -57,10 +57,10 @@ console.log("end");
  event.preventDefault();
   
 });
-/*================AJAX PRESET ADD=============*/
+/*================AJAX PRESET ADD=============**/
 let form1=$('preset_form');
 $(document).on('submit','#preset_form',function(event){
-  //event.preventDefault();
+  event.preventDefault();
   
 
 
@@ -68,14 +68,18 @@ $(document).on('submit','#preset_form',function(event){
       type: form1.attr('method'),
       url: form1.attr('action'),
       data:form1.serialize(),
+      contentType:"json",
+      
       success:function(data)
       {
-        alert(data);
+      	
+        alert("Successfully added Preset!");
       },
       error:function()
       {
         alert("Failed to add preset");
-      }
+      },
+      
     })
 
 });
@@ -91,9 +95,21 @@ save=function()
 }
 revert=function()
 {
+  console.log("revrt");
   SessionImage.src=img_url.pop();
+  myImage=new Image();
+  myImage.src=SessionImage.src;
+  var myCanvas = document.getElementById("myCanvas"); // Creates a canvas object
+  let myContext = myCanvas.getContext("2d"); // Creates a contect object
+  myContext.save();
+ myContext.fillStyle = "#ffffff";  
+ myContext.fillRect(0, 0, myCanvas.width, myCanvas.height);
+  myCanvas.width = myImage.width; // Assigns image's width to canvas
+  myCanvas.height = myImage.height; // Assigns image's height to canvas
+  myContext.drawImage(myImage,0,0); // Draws the image on canvas
+  let imgData = myCanvas.toDataURL("image/jpeg",0.75);
 
-  cropper.showImage(SessionImage.src);
+  
 }
 
 /*=========CROP IMAGE======*/
@@ -169,6 +185,8 @@ function brightness() {
     Caman(container,function(){
      this.brightness(rangeInput).render();
    });
+   container.getContext("2d").save();
+   SessionImage.src=container.toDataURL("image/jpeg");
  }
 
 
@@ -194,14 +212,13 @@ function applyContrast() {
     rangeInput = document.getElementById('rangeContrast').value;
     console.log("inside" + rangeInput);
     container = document.getElementById('myCanvas');
-    Caman(container,function() {
-      this.newLayer(function() {
-        this.setBlendingMode("multiply");
-        this.filter.contrast(rangeInput);
-        this.copyParent();
-      });
-      this.render();
-   });
+    Caman(container,function()
+    {
+        this.contrast(rangeInput).render;
+    });
+    container.getContext("2d").save();
+   SessionImage.src=container.toDataURL("image/jpeg");
+    
 }
 
 function saturation() {
@@ -213,6 +230,7 @@ function saturation() {
   } else {
     section.style.display = 'none';
   }
+  
 }
 
 
@@ -224,6 +242,8 @@ function applySaturation() {
     Caman(container,function(){
      this.saturation(rangeInput).render();
    });
+   container.getContext("2d").save();
+   SessionImage.src=container.toDataURL("image/jpeg");
 }
 /*==Download===*/
 function downloadCanvas(){  
@@ -251,6 +271,7 @@ function opacity() {
   } else {
     section.style.display = 'none';
   }
+  
 } 
 
 function applyOpacity() {
@@ -266,6 +287,8 @@ function applyOpacity() {
       });
       this.render();
    });
+   container.getContext().save();
+   SessionImage.src=container.toDataURL("image/jpeg");
 }
 
 function temperature() {
@@ -300,6 +323,8 @@ function applyTemperature() {
       this.clip(10);
       this.render();
    });
+   container.getContext().save();
+   SessionImage.src=container.toDataURL("image/jpeg");
 }
 
 
@@ -338,6 +363,37 @@ window.onclick = function(event) {
   }
 }
 
+
+
+let add=function()
+ {
+  $(document).on('click','#addThePreset',function(event){
+    
+    dataString=$('#preset_form').serialize();
+    
+  
+  
+      $.ajax({
+        type: "POST",
+        url: "addPreset",
+        data:dataString,
+        contentType:"json",
+        
+        success:function(data)
+        {
+          
+          alert(data.msg);
+        },
+        error:function()
+        {
+          alert("Failed to add preset");
+        },
+        
+      })
+  
+  });
+  
+}
 
 // ======================== VIGNETTE ========================
 

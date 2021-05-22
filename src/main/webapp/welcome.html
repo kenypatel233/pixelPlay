@@ -12,6 +12,7 @@
         <script type="text/javascript" src="./js/cropper.js-master/cropper.js"></script>   
         
         
+        
              
         <script>
             $(document).ready(function () {
@@ -139,7 +140,7 @@
                 <div id="brightness_section" style="display: none;">
                     <form id="brightness_form" name="brightness_form">
                         <label style="padding-right:20px;">Brightness:</label>
-                        <input type="range" id="rangeBrightness" value="0" min="-100" max="100"
+                        <input type="range" id="rangeBrightness" value="0" min="-50" max="50"
                             oninput="document.getElementById('brightness_label').innerHTML = this.value" />
                         <label id="brightness_label" style="padding-left:20px;"></label>
                         <input type="button" value="Apply" onclick="applyBrightness()" />
@@ -148,7 +149,7 @@
                 <div id="contrast_section" style="display: none;">
                     <form id="contrast_form" name="contrast_form">
                         <label style="padding-right:20px;">Contast:</label>
-                        <input type="range" id="rangeContrast" value="0" min="0" max="10"
+                        <input type="range" id="rangeContrast" value="0" min="0" max="5"
                             oninput="document.getElementById('contrast_label').innerHTML = this.value" />
                         <label id="contrast_label" style="padding-left:20px;"></label>
                         <input type="button" value="Apply" onclick="applyContrast()" />
@@ -204,7 +205,7 @@
                                                       <br>
 
                                              
-                                                    <label style="padding-right:20px;">Contast:</label>
+                                                    <label style="padding-right:20px;">Contrast:</label>
                                                     <input type="range" id="rangeContrastt" name="rangeContrastt" value="180" min="0" max="360"
                                                         oninput="document.getElementById('contrast_labell').innerHTML = this.value" />
                                                     <br>
@@ -229,13 +230,11 @@
                                                     <input type="text" name="presetName" id="presetName" />
                                             
                                               
-                                        <input type="submit" value="Add preset"/>
+                                        <input type="submit" id="addThePreset" value="Add preset" />
                                         
+                                        </form>
                                         
 
-
-
-                                    </form>
                                     </div>
                                 
                             </div>
@@ -260,6 +259,7 @@
         <!-- ===== MAIN JS ===== -->
         <script src="./js/auth.js"></script>
         <script src="./js/welcome.js"></script>
+        
         
     </body>
 </html>

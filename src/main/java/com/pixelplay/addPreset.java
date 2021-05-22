@@ -1,7 +1,7 @@
 package com.pixelplay;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 @WebServlet("/addPreset")
 public class addPreset extends HttpServlet {
@@ -73,7 +77,13 @@ public class addPreset extends HttpServlet {
 		else{
 			msg =" Some Error Occurred";
 		}
-		JSONObject obj = new JSONObject();
+		
+		Gson gson=new Gson();
+		JsonObject myObj = new JsonObject();
+		JsonElement message= gson.toJsonTree(msg);
+		myObj.add("msg", message);
+		
+		/*JSONObject obj = new JSONObject();
 
 	    try {
 
@@ -88,12 +98,15 @@ public class addPreset extends HttpServlet {
 	          e.printStackTrace();
 
 	         }
-
+	    */
+		
 	    res.setContentType("application/json");
-
+		
 	    res.setCharacterEncoding("utf-8");
+		
 
-	    res.getWriter().write(obj.toString());
+	    res.getWriter().write(myObj.toString());
+
 
 	    
 		 
