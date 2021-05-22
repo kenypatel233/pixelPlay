@@ -75,14 +75,7 @@
                             <span class="icon"><i class="fas fa-thermometer-empty"></i></span>
                             <span class="title">Temperature</span>
                         </a></li>
-                    <li class=""><a href="#">
-                            <span class="icon"><i class="fas fa-plus"></i></span>
-                            <span class="title">Add Sticker</span>
-                        </a></li>
-                    <!-- <li id="vignette" class=""> <a href="#" onclick="myVignette()" >
-                            <span class="icon"><i class="fas fa-money-bill"></i></span>
-                            <span class="title">Vignette</span>
-                        </a></li> -->
+                    
                     <li id="preset" class=""><a href="#" id="myBtn">
                             <span class="icon"><i class="fas fa-sliders-h"></i></span>
                             <span class="title">Add PRESET</span>
@@ -98,7 +91,7 @@
             <div class="main_container">
                 <h1>Welcome</h1>
               
-                <!-- <img id="output" width="175" /> -->
+                
                 <div>
                     <form id="uploadForm" name="uploadForm"  action="insertImage" method="POST" enctype="multipart/form-data">
                         <div>
@@ -148,7 +141,7 @@
                 </div>
                 <div id="contrast_section" style="display: none;">
                     <form id="contrast_form" name="contrast_form">
-                        <label style="padding-right:20px;">Contast:</label>
+                        <label style="padding-right:20px;">Contrast:</label>
                         <input type="range" id="rangeContrast" value="0" min="0" max="5"
                             oninput="document.getElementById('contrast_label').innerHTML = this.value" />
                         <label id="contrast_label" style="padding-left:20px;"></label>
