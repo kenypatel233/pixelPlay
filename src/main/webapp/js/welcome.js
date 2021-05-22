@@ -8,6 +8,7 @@ function cPush() {
   cPushArray.push(document.getElementById('myCanvas').toDataURL());
 }
 function cUndo() {
+  console.log("Undo");
   if (cStep > 0) {
       cStep--;
       var canvasPic = new Image();
