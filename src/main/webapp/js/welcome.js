@@ -160,11 +160,24 @@ function brightness() {
   }
 }
 
-function applyBrightness() {
-  rangeInput = document.getElementById('rangeBrightness');
-  container = document.getElementById('myCanvas');
-  container.style.filter = "brightness(" + rangeInput.value + "%)";
-}
+ //New brightness function
+ function applyBrightness()
+  {
+    rangeInput = document.getElementById('rangeBrightness').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas');
+    Caman(container,function(){
+     this.brightness(rangeInput).render();
+   });
+ }
+
+
+
+// function applyBrightness() {
+//   rangeInput = document.getElementById('rangeBrightness');
+//   container = document.getElementById('myCanvas');
+//   container.style.filter = "brightness(" + rangeInput.value + "%)";
+// }
 
 function contrast() {
   console.log("called brightness");
@@ -178,9 +191,17 @@ function contrast() {
 }
 
 function applyContrast() {
-  rangeInput = document.getElementById('rangeContrast');
-  container = document.getElementById('myCanvas');
-  container.style.filter = "contrast(" + rangeInput.value + "%)";
+    rangeInput = document.getElementById('rangeContrast').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas');
+    Caman(container,function() {
+      this.newLayer(function() {
+        this.setBlendingMode("multiply");
+        this.filter.contrast(rangeInput);
+        this.copyParent();
+      });
+      this.render();
+   });
 }
 
 function saturation() {
@@ -197,9 +218,12 @@ function saturation() {
 
 
 function applySaturation() {
-  rangeInput = document.getElementById('rangeSaturation');
-  container = document.getElementById('myCanvas');
-  container.style.filter = "saturate(" + rangeInput.value + "%)";
+    rangeInput = document.getElementById('rangeSaturation').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas');
+    Caman(container,function(){
+     this.saturation(rangeInput).render();
+   });
 }
 /*==Download===*/
 function downloadCanvas(){  
@@ -227,30 +251,64 @@ function opacity() {
   } else {
     section.style.display = 'none';
   }
-}
+} 
 
 function applyOpacity() {
-  rangeInput = document.getElementById('rangeOpacity');
-  container = document.getElementById('myCanvas');
-  container.style.filter = "opacity(" + rangeInput.value + "%)";
+    console.log("OPACITYYYYYYYYYYYY");
+    rangeInput = document.getElementById('rangeOpacity').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas');
+    Caman(container,function() {
+      this.newLayer(function() {
+        this.setBlendingMode("multiply");
+        this.opacity(rangeInput);
+        this.copyParent();
+      });
+      this.render();
+   });
 }
 
-function blur() {
-  console.log("called blur");
-  document.getElementById("rangeBlur").className.replace("","active");
-  var section= document.getElementById("blur_section");
+function temperature() {
+  console.log("called temperature");
+  document.getElementById("rangeTemperature").className.replace("","active");
+  var section= document.getElementById("temperature_section");
   if (section.style.display == 'none') {
     section.style.display = 'block';
   } else {
     section.style.display = 'none';
   }
+} 
+
+function applyTemperature() {
+    console.log("TEMPERATUREEEEEE");
+    rangeInput = document.getElementById('rangeTemperature').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas');
+    Caman(container,function() {
+      this.newLayer(function() {
+        if (rangeInput < 0) {
+          this.fillColor('#48D1CC');
+          this.opacity((rangeInput));
+          this.copyParent();
+        }
+        else {
+          this.fillColor('#FFD700');
+          this.opacity((rangeInput));
+          this.copyParent();
+        }
+      });
+      this.clip(10);
+      this.render();
+   });
 }
 
-function applyBlur() {
-  rangeInput = document.getElementById('rangeBlur');
-  container = document.getElementById('myCanvas');
-  container.style.filter = "blur(" + rangeInput.value + "px)";
-}
+
+// function applyOpacity() {
+//   rangeInput = document.getElementById('rangeOpacity');
+//   container = document.getElementById('myCanvas');
+//   container.style.filter = "opacity(" + rangeInput.value + "%)";
+// }
+
 
 
 /*======preset Modal======*/
@@ -279,19 +337,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
- //New brightness function
- function brightnessApply()
-  {
-    rangeInput = document.getElementById('rangeBrightness').value;
-    console.log("inside" + rangeInput);
-  container = document.getElementById('myCanvas');
-   Caman(container,function(){
-     this.brightness(rangeInput).render();
-   });
- }
-
-
-
 
 
 // ======================== VIGNETTE ========================
