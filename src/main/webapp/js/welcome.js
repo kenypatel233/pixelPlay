@@ -57,6 +57,29 @@ console.log("end");
  event.preventDefault();
   
 });
+/*================AJAX PRESET ADD=============*/
+let form1=$('preset_form');
+$(document).on('submit','#preset_form',function(event){
+  event.preventDefault();
+  
+
+
+    $.ajax({
+      type: form1.attr('method'),
+      url: form1.attr('action'),
+      data:form1.serialize(),
+      success:function(data)
+      {
+        var result=data;
+        alert(result);
+      },
+      error:function()
+      {
+        alert("Failed to add preset");
+      }
+    })
+
+});
 /*============Save-Revert==========*/
 
 save=function()
