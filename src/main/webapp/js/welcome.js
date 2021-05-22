@@ -1,5 +1,7 @@
 var SessionImage=new Image();
-var img_url;
+var img_url=new Array();
+var ctx;
+
 /*=========UPLOADING IMAGE TO CANVAS ELEMENT=============*/
 var onload=function(e){
 let imgInput = document.getElementById('imageInput');
@@ -18,13 +20,20 @@ let imgInput = document.getElementById('imageInput');
           myCanvas.height = myImage.height; // Assigns image's height to canvas
           myContext.drawImage(myImage,0,0); // Draws the image on canvas
           let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
-         
-          SessionImage.src=myImage.src;
+          ctx=myCanvas.getContext("2d");
+          
+
+          SessionImage.src=imgData;
+          img_url.push(imgData);
+          
+          
           
         }
       }
     }
   })};
+
+  
 /*============AJAX ADD IMAGE TO DB=================*/
 
 
@@ -48,6 +57,23 @@ console.log("end");
  event.preventDefault();
   
 });
+/*============Save-Revert==========*/
+
+save=function()
+{
+  myCanvas=document.getElementById("myCanvas");
+  ctx= document.getElementById("myCanvas").getContext("2d");
+  ctx.save();
+  SessionImage.src=myCanvas.toDataURL("image/jpeg",0.75);
+  img_url.push(SessionImage.src);
+}
+revert=function()
+{
+  SessionImage.src=img_url.pop();
+
+  cropper.showImage(SessionImage.src);
+}
+
 /*=========CROP IMAGE======*/
 function crop() 
 {
@@ -80,16 +106,27 @@ function applyRotation() {
 
  angle=(document.getElementById("rotate_label").innerHTML)*0.01745; 
  myc=document.getElementById("myCanvas");
- var surfaceContext= document.getElementById("myCanvas").getContext("2d");
+ var surfaceContext= myc.getContext("2d");
+ //document.getElementById("myCanvas").getContext("2d");
+ ctx=surfaceContext;
+ ctx.save();
  
  surfaceContext.save();
+ surfaceContext.fillStyle = "#ffffff";  
+ surfaceContext.fillRect(0, 0, myc.width, myc.height);  
 surfaceContext.translate(SessionImage.width*0.5,SessionImage.height*0.5);
 surfaceContext.rotate(angle);
 surfaceContext.translate(-SessionImage.width*0.5,-SessionImage.height*0.5);
 surfaceContext.drawImage(SessionImage,0,0);
+SessionImage.src=myc.toDataURL("image/jpeg",0.75);
 //surfaceContext.restore();
 }
 
+
+
+
+
+  
 function brightness() {
   console.log("called brightness");
   document.getElementById("rangeBrightness").className.replace("","active");
@@ -135,10 +172,28 @@ function saturation() {
   }
 }
 
+
+
 function applySaturation() {
   rangeInput = document.getElementById('rangeSaturation');
   container = document.getElementById('myCanvas');
   container.style.filter = "saturate(" + rangeInput.value + "%)";
+}
+/*==Download===*/
+function downloadCanvas(){  
+  // get canvas data  
+  canvas=document.getElementById("myCanvas");
+  var image = canvas.toDataURL();  
+
+  // create temporary link  
+  var tmpLink = document.createElement( 'a' );  
+  tmpLink.download = 'pixelPlay.jpeg'; // set the name of the download file 
+  tmpLink.href = image;  
+
+  // temporarily add link to body and initiate the download  
+  document.body.appendChild( tmpLink );  
+  tmpLink.click();  
+  document.body.removeChild( tmpLink );  
 }
 
 function opacity() {
@@ -176,9 +231,42 @@ function applyBlur() {
 }
 
 
+/*======preset Modal======*/
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+ //New brightness function
+ function brightnessApply()
+  {
+    rangeInput = document.getElementById('rangeBrightness').value;
+    console.log("inside" + rangeInput);
+  container = document.getElementById('myCanvas');
+   Caman(container,function(){
+     this.brightness(rangeInput).render();
+   });
+ }
 
 
 

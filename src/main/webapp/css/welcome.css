@@ -186,3 +186,79 @@ canvas
 
   margin-left : 40%;
 }
+
+.brightness-box {
+  width: 400px;
+  height: 60px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brightness-box {
+  margin: 0 10px;
+}
+
+#range {
+  width: 100%;
+  -webkit-appearence:none;
+  background: #0a85ff;
+  height: 3px;
+  outline: none;
+}
+
+#range::-webkit-slider-thumb {
+  -webkit-appearence:none;
+  width: 22px;
+  height: 22px;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.save_revert
+{
+  
+  margin-left:70%;
+  
+  padding:7%;
+  
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+  padding-top: 3%;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
