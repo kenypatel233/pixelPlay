@@ -70,8 +70,7 @@ $(document).on('submit','#preset_form',function(event){
       data:form1.serialize(),
       success:function(data)
       {
-        var result=data;
-        alert(result);
+        alert("preset added");
       },
       error:function()
       {
