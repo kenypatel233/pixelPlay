@@ -1,6 +1,28 @@
 var SessionImage=new Image();
-var img_url=new Array();
-var ctx;
+var cPushArray=new Array();
+var cStep = -1;
+var ctx=document.getElementById("myCanvas");
+function cPush() {
+  cStep++;
+  if (cStep < cPushArray.length) { cPushArray.length = cStep; }
+  cPushArray.push(document.getElementById('myCanvas').toDataURL());
+}
+function cUndo() {
+  if (cStep > 0) {
+      cStep--;
+      var canvasPic = new Image();
+      canvasPic.src = cPushArray[cStep];
+      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+  }
+}
+function cRedo() {
+  if (cStep < cPushArray.length-1) {
+      cStep++;
+      var canvasPic = new Image();
+      canvasPic.src = cPushArray[cStep];
+      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+  }
+}
 
 /*=========UPLOADING IMAGE TO CANVAS ELEMENT=============*/
 var onload=function(e){
@@ -21,10 +43,10 @@ let imgInput = document.getElementById('imageInput');
           myContext.drawImage(myImage,0,0); // Draws the image on canvas
           let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
           ctx=myCanvas.getContext("2d");
-          
+          cPush();
 
           SessionImage.src=imgData;
-          img_url.push(imgData);
+          
           
           
           
@@ -83,7 +105,7 @@ $(document).on('submit','#preset_form',function(event){
     })
 
 });
-/*============Save-Revert==========*/
+/*============Save-Revert==========
 
 save=function()
 {
@@ -111,7 +133,7 @@ revert=function()
 
   
 }
-
+*/
 /*=========CROP IMAGE======*/
 function crop() 
 {
@@ -127,6 +149,7 @@ if (section.style.display == 'none') {
 // initialize cropper by providing it with a target canvas and a XY ratio (height = width * ratio)
 cropper.start(document.getElementById("myCanvas"), 1); 
 cropper.showImage(SessionImage.src);
+cPush();
 
 }
 function rotate()
@@ -156,7 +179,8 @@ surfaceContext.translate(SessionImage.width*0.5,SessionImage.height*0.5);
 surfaceContext.rotate(angle);
 surfaceContext.translate(-SessionImage.width*0.5,-SessionImage.height*0.5);
 surfaceContext.drawImage(SessionImage,0,0);
-SessionImage.src=myc.toDataURL("image/jpeg",0.75);
+cPush();
+//SessionImage.src=myc.toDataURL("image/jpeg",0.75);
 //surfaceContext.restore();
 }
 
@@ -185,8 +209,9 @@ function brightness() {
     Caman(container,function(){
      this.brightness(rangeInput).render();
    });
-   container.getContext("2d").save();
-   SessionImage.src=container.toDataURL("image/jpeg");
+   //container.getContext("2d").save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   cPush();
  }
 
 
@@ -216,8 +241,9 @@ function applyContrast() {
     {
         this.contrast(rangeInput).render;
     });
-    container.getContext("2d").save();
-   SessionImage.src=container.toDataURL("image/jpeg");
+    //container.getContext("2d").save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   cPush();
     
 }
 
@@ -242,8 +268,9 @@ function applySaturation() {
     Caman(container,function(){
      this.saturation(rangeInput).render();
    });
-   container.getContext("2d").save();
-   SessionImage.src=container.toDataURL("image/jpeg");
+   //container.getContext("2d").save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   cPush();
 }
 /*==Download===*/
 function downloadCanvas(){  
@@ -287,8 +314,9 @@ function applyOpacity() {
       });
       this.render();
    });
-   container.getContext().save();
-   SessionImage.src=container.toDataURL("image/jpeg");
+   //container.getContext().save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   cPush();
 }
 
 function temperature() {
@@ -300,6 +328,7 @@ function temperature() {
   } else {
     section.style.display = 'none';
   }
+  
 } 
 
 function applyTemperature() {
@@ -323,8 +352,9 @@ function applyTemperature() {
       this.clip(10);
       this.render();
    });
-   container.getContext().save();
-   SessionImage.src=container.toDataURL("image/jpeg");
+   //container.getContext().save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   cPush();
 }
 
 
