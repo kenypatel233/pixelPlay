@@ -185,7 +185,7 @@ function applyContrast() {
 }
 
 function saturation() {
-  console.log("called brightness");
+  console.log("called saturation");
   document.getElementById("rangeSaturation").className.replace("","active");
   var section= document.getElementById("saturation_section");
   if (section.style.display == 'none') {
@@ -217,6 +217,40 @@ function downloadCanvas(){
   document.body.appendChild( tmpLink );  
   tmpLink.click();  
   document.body.removeChild( tmpLink );  
+}
+
+function opacity() {
+  console.log("called opacity");
+  document.getElementById("rangeOpacity").className.replace("","active");
+  var section= document.getElementById("opacity_section");
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+function applyOpacity() {
+  rangeInput = document.getElementById('rangeOpacity');
+  container = document.getElementById('myCanvas');
+  container.style.filter = "opacity(" + rangeInput.value + "%)";
+}
+
+function blur() {
+  console.log("called blur");
+  document.getElementById("rangeBlur").className.replace("","active");
+  var section= document.getElementById("blur_section");
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+}
+
+function applyBlur() {
+  rangeInput = document.getElementById('rangeBlur');
+  container = document.getElementById('myCanvas');
+  container.style.filter = "blur(" + rangeInput.value + "px)";
 }
 
 
