@@ -60,7 +60,7 @@ console.log("end");
 /*================AJAX PRESET ADD=============*/
 let form1=$('preset_form');
 $(document).on('submit','#preset_form',function(event){
-  event.preventDefault();
+  //event.preventDefault();
   
 
 
@@ -70,7 +70,7 @@ $(document).on('submit','#preset_form',function(event){
       data:form1.serialize(),
       success:function(data)
       {
-        alert("preset added");
+        alert(data);
       },
       error:function()
       {
