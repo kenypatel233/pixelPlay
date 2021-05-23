@@ -41,13 +41,13 @@ public class InsertImage extends HttpServlet {
 				try{
 					Class.forName("com.mysql.cj.jdbc.Driver");					
 				     con = (Connection) DriverManager.getConnection(connectionURL, user, pass);
-				    if(con==null) {resp.getWriter().print("null con");}
+				    
 				     
 				    
 				    PreparedStatement ps = (PreparedStatement) con.prepareStatement("insert into image_upload(Image) values(?)");
 				    InputStream is = part.getInputStream();
 				    
-				    resp.getWriter().print("inside try");
+				   
 				    
 				    ps.setBlob(1, is);
 				    result = ps.executeUpdate();
