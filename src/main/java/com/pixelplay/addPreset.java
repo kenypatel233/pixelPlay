@@ -82,23 +82,7 @@ public class addPreset extends HttpServlet {
 		JsonObject myObj = new JsonObject();
 		JsonElement message= gson.toJsonTree(msg);
 		myObj.add("msg", message);
-		
-		/*JSONObject obj = new JSONObject();
-
-	    try {
-
-	          obj.put("msg", msg);
-
-	          
-
-	         } catch (JSONException e) {     
-
-	          // TODO Auto-generated catch block
-
-	          e.printStackTrace();
-
-	         }
-	    */
+	
 		
 	    res.setContentType("application/json");
 		

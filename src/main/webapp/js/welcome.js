@@ -72,7 +72,6 @@ success: function (responseText) {
 var result=responseText;
 $('#uploadResult').text(responseText.msg);
 console.log("end");
-
  
 }
  
@@ -83,8 +82,7 @@ console.log("end");
 /*================AJAX PRESET ADD=============**/
 let form1=$('preset_form');
 $(document).on('submit','#preset_form',function(event){
-  event.preventDefault();
-  
+  event.preventDefault(); 
 
 
     $.ajax({

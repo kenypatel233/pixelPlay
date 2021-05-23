@@ -96,19 +96,10 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- <div class="hamburger">
-                            <div class="inner_hamburger">
-                                <span class="arrow">
-                                    <i class="fas fa-long-arrow-alt-left"></i>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </span>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
         
                 <div class="container">
-                
                     <!-- <img id="output" width="175" /> -->
                     <div>
                         <form id="uploadForm" name="uploadForm"  action="insertImage" method="POST" enctype="multipart/form-data">
@@ -124,127 +115,125 @@
                                 <button onclick="cRedo()" class="button2">Redo </button>
                             </div>
                         </div>
-                
+                    </div>
                     <div id="canvasDiv" >
                         <canvas id="myCanvas" class="" ></canvas>               
-                    </div>    
-                </div>
-                <div class="toolbar">
-                    <div id="crop_section" style="display: none;">
-                        
-                        <input type="button" onclick="cropper.startCropping()" value="Start cropping" />
-                        <input type="button" onclick="cropper.getCroppedImageSrc()" value="Crop" />
-                        <input type="button" onclick="cropper.restore()" value="Restore" />
-                        
                     </div>
-                    <div id="rotate_section" style="display: none;">
-                        <form id="rotate_form" name="rotate_form"  >
-                            <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Rotate(deg):
-                            <div class="range">
-                                <div id="rotate_label" class="sliderValue">
-                                    <span>100</span>
-                                </div>
-                                <div class="field">
-                                    <div class="value left">
-                                        0</div>
-                                    <input class="rangeslider" id="fromPrice" type="range" min="0" max="360" value="180" steps="1"
-                                    oninput="document.getElementById('rotate_label').innerHTML = this.value" />
-                                    <div class="value right">
-                                        360</div>
-                                </div>
-                            </div>
-                            <input class="applybutton" type="button" value="Apply" onclick="applyRotation()" />
-                        </form>
-                    </div>
-                    <div id="brightness_section" style="display: none;">
-                        <form id="brightness_form" name="brightness_form">
-                            <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Brightness:
-                            <div class="range">
-                                <div id="brightness_label" class="sliderValue">
-                                    <span>0</span>
-                                </div>
-                                <div class="field">
-                                    <div class="value left">
-                                        -50</div>
-                                    <input class="rangeslider" id="rangeBrightness" type="range" min="-50" max="50" value="0" steps="1"
-                                        oninput="document.getElementById('brightness_label').innerHTML = this.value" />
-                                    <div class="value right">
-                                        50
+                    <div class="toolbar">
+                        <div id="crop_section" style="display: none;">
+                            
+                            <input type="button" onclick="cropper.startCropping()" value="Start cropping" />
+                            <input type="button" onclick="cropper.getCroppedImageSrc()" value="Crop" />
+                            <input type="button" onclick="cropper.restore()" value="Restore" />
+                        </div>
+                        <div id="rotate_section" style="display: none;">
+                            <form id="rotate_form" name="rotate_form"  >
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Rotate(deg):
+                                <div class="range">
+                                    <div id="rotate_label" class="sliderValue">
+                                        <span>100</span>
+                                    </div>
+                                    <div class="field">
+                                        <div class="value left">
+                                            0</div>
+                                        <input class="rangeslider" id="fromPrice" type="range" min="0" max="360" value="180" steps="1"
+                                        oninput="document.getElementById('rotate_label').innerHTML = this.value" />
+                                        <div class="value right">
+                                            360</div>
                                     </div>
                                 </div>
-                            </div>
-                            <input class="applybutton" type="button" value="Apply" onclick="applyBrightness()" />
-                        </form>
-                    </div>
-                    <div id="contrast_section" style="display: none;">               
-                        
-                        <form id="contrast_form" name="contrast_form">
-                            <label style="padding-right:20px;">Contast:</label>
-                            <input type="range" id="rangeContrast" value="0" min="0" max="5"
-                                oninput="document.getElementById('contrast_label').innerHTML = this.value" />
-                            <label id="contrast_label" style="padding-left:20px;"></label>
-                            <input type="button" value="Apply" onclick="applyContrast()" />
-                        </form>
-                    </div>
-                    <div id="saturation_section" style="display: none;">
-                        <form id="saturation_form" name="saturation_form">
-                            <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Saturation:
+                                <input class="applybutton" type="button" value="Apply" onclick="applyRotation()" />
+                            </form>
+                        </div>
+                        <div id="brightness_section" style="display: none;">
+                            <form id="brightness_form" name="brightness_form">
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Brightness:
                                 <div class="range">
-                                    <div id="saturation_label" class="sliderValue">
+                                    <div id="brightness_label" class="sliderValue">
                                         <span>0</span>
                                     </div>
                                     <div class="field">
                                         <div class="value left">
                                             -50</div>
-                                        <input class="rangeslider" id="rangeSaturation" type="range" min="-50" max="50" value="0" steps="1"
-                                            oninput="document.getElementById('saturation_label').innerHTML = this.value" />
+                                        <input class="rangeslider" id="rangeBrightness" type="range" min="-50" max="50" value="0" steps="1"
+                                            oninput="document.getElementById('brightness_label').innerHTML = this.value" />
                                         <div class="value right">
                                             50
                                         </div>
                                     </div>
                                 </div>
-                                <input class="applybutton" type="button" value="Apply" onclick="applySaturation()" />
-                        </form>
-                    </div>
-                    <div id="opacity_section" style="display: none;">
-                        <form id="opacity_form" name="opacity_form">
-                            <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Opacity:
-                                <div class="range">
-                                    <div id="opacity_label" class="sliderValue">
-                                        <span>0</span>
-                                    </div>
-                                    <div class="field">
-                                        <div class="value left">
-                                            -50</div>
-                                        <input class="rangeslider" id="rangeOpacity" type="range" min="-50" max="50" value="0" steps="1"
-                                            oninput="document.getElementById('opacity_label').innerHTML = this.value" />
-                                        <div class="value right">
-                                            50
+                                <input class="applybutton" type="button" value="Apply" onclick="applyBrightness()" />
+                            </form>
+                        </div>
+                        <div id="contrast_section" style="display: none;">               
+                            <form id="contrast_form" name="contrast_form">
+                                <label style="padding-right:20px;">Contast:</label>
+                                <input type="range" id="rangeContrast" value="0" min="0" max="5"
+                                    oninput="document.getElementById('contrast_label').innerHTML = this.value" />
+                                <label id="contrast_label" style="padding-left:20px;"></label>
+                                <input type="button" value="Apply" onclick="applyContrast()" />
+                            </form>
+                        </div>
+                        <div id="saturation_section" style="display: none;">
+                            <form id="saturation_form" name="saturation_form">
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Saturation:
+                                    <div class="range">
+                                        <div id="saturation_label" class="sliderValue">
+                                            <span>0</span>
+                                        </div>
+                                        <div class="field">
+                                            <div class="value left">
+                                                -50</div>
+                                            <input class="rangeslider" id="rangeSaturation" type="range" min="-50" max="50" value="0" steps="1"
+                                                oninput="document.getElementById('saturation_label').innerHTML = this.value" />
+                                            <div class="value right">
+                                                50
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <input class="applybutton" type="button" value="Apply" onclick="applyOpacity()" />
-                        </form>
-                    </div>
-                    <div id="temperature_section" style="display: none;">
-                        <form id="temperature_form" name="temperature_form">
-                            <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Temperature:
-                                <div class="range">
-                                    <div id="temperature_label" class="sliderValue">
-                                        <span>0</span>
-                                    </div>
-                                    <div class="field">
-                                        <div class="value left">
-                                            -50</div>
-                                        <input class="rangeslider" id="rangeTemperature" type="range" min="-50" max="50" value="0" steps="1"
-                                            oninput="document.getElementById('temperature_label').innerHTML = this.value" />
-                                        <div class="value right">
-                                            50
+                                    <input class="applybutton" type="button" value="Apply" onclick="applySaturation()" />
+                            </form>
+                        </div>
+                        <div id="opacity_section" style="display: none;">
+                            <form id="opacity_form" name="opacity_form">
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Opacity:
+                                    <div class="range">
+                                        <div id="opacity_label" class="sliderValue">
+                                            <span>0</span>
+                                        </div>
+                                        <div class="field">
+                                            <div class="value left">
+                                                -50</div>
+                                            <input class="rangeslider" id="rangeOpacity" type="range" min="-50" max="50" value="0" steps="1"
+                                                oninput="document.getElementById('opacity_label').innerHTML = this.value" />
+                                            <div class="value right">
+                                                50
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <input class="applybutton" type="button" value="Apply" onclick="applyTemperature()" />
-                        </form>
+                                    <input class="applybutton" type="button" value="Apply" onclick="applyOpacity()" />
+                            </form>
+                        </div>
+                        <div id="temperature_section" style="display: none;">
+                            <form id="temperature_form" name="temperature_form">
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Temperature:
+                                    <div class="range">
+                                        <div id="temperature_label" class="sliderValue">
+                                            <span>0</span>
+                                        </div>
+                                        <div class="field">
+                                            <div class="value left">
+                                                -50</div>
+                                            <input class="rangeslider" id="rangeTemperature" type="range" min="-50" max="50" value="0" steps="1"
+                                                oninput="document.getElementById('temperature_label').innerHTML = this.value" />
+                                            <div class="value right">
+                                                50
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input class="applybutton" type="button" value="Apply" onclick="applyTemperature()" />
+                            </form>
+                        </div>
                     </div>
                     <!-- ===========The preset Modal ============ -->
                     <div id="myModal" class="modal">
