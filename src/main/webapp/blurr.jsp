@@ -6,17 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="ISO-8859-1">
-<title>Blur Result</title>
-<style>
-.original{border:5px solid #0D1137 ; margin:10%; padding:10%; text-align:center ;}
-.blur{border:5px solid #0D1137; margin:10%; padding:10%; text-align:center;}
-</style>
-
+<title>Insert title here</title>
 </head>
 
-<body>
+
 <%
 
 File f = new File((String) request.getAttribute("path"));
@@ -31,28 +25,13 @@ ImageIO.write(b_in,"jpg",o);
 String ob64 = Base64.getEncoder().encodeToString(o.toByteArray());
 
 %>
-
-<h2 style="text-align:center; color: #E52165">Original</h2>
-
-
-<div class="original">
+<p>Original</p>
 <img src="data:image/jpg;base64,<%=ob64 %>" alt="origin" />
-</div>
-
 <br>
-<h2 style="text-align:center; color: #E52165">Blur Effect</h2>
-<div class="blur">
-<img src="data:image/jpg;base64,<%=b64 %>" alt="image" id="myimg"/>
+<p>Blur Image</p>
+<img src="data:image/jpg;base64,<%=b64 %>" alt="image" />
+<button> Download </button>
+<body>
 
-<a href=data:image/jpg;base64,<%=b64 %> download="pixelPlay.jpg"><button>Download</button></a>
-</div>
-
-
-
-
-
-
-
-
-</body> 
+</body>
 </html>
