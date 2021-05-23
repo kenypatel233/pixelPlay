@@ -21,13 +21,11 @@
 <body>
 <% 
 
-
-String path= (String)request.getAttribute("path");
-//BufferedImage b_in = ImageIO.read(f);
-//String path= request.getParameter("url");
+String path="";
+path=(String)(request.getAttribute(path));
  final double krnlRatio = 0.01; // set kernel ratio
  final double eps = 0.000001;
- DarkChannelPriorDehazing d = new DarkChannelPriorDehazing(path);
+ DarkChannelPriorDehazing d ;
 //File f = new File(path);
 //BufferedImage b_in = ImageIO.read(f);
 Mat image = Imgcodecs.imread(path, Imgcodecs.IMREAD_COLOR);
