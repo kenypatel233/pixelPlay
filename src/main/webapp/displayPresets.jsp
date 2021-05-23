@@ -53,10 +53,6 @@ var onload=function(e){
 	          myCanvas.height = myImage.height; // Assigns image's height to canvas
 	          myContext.drawImage(myImage,0,0); // Draws the image on canvas
 	          let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
-	          
-	          
-	          
-	          
 	        }
 	      }
 	    }
@@ -128,13 +124,10 @@ finally
 
 	</table>
 	<div>
-							
-                            <p><label for="imageLoad" style="cursor: pointer;">Upload Image</label></p>
-                            <input type="file" id="imageLoad" name="imageLoad" accept="image/*" onchange="onload"
-                                style="display: none;">
-                            
-                            
-                        </div>
+		<p><label for="imageLoad" style="cursor: pointer;" class="displaypresetjsp">Upload Image</label></p>
+		<input type="file" id="imageLoad" name="imageLoad" accept="image/*" onchange="onload"
+			style="display: none;">
+	</div>
 	
 	<canvas id="myCanvas1" class="canvas1">
 	
@@ -142,7 +135,7 @@ finally
 	</canvas>
 	<form method="POST" action="BlurImage" enctype="multipart/form-data">
 	<input type="file" id="imageInput" name="imageInput" accept="image/*" />
-                            <input type="submit" id="submit1" value="Add Image">    
+    <input type="submit" id="submit1" value="Add Image">    
 	
 	</form>
 </body>
