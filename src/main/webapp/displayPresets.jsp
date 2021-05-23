@@ -10,7 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Presets</title>
-<link rel="stylesheet" href="./css/welcome.css" />
+<link rel="stylesheet" href="./css/displaypreset.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
@@ -62,6 +62,15 @@ var onload=function(e){
 
 </head>
 <body>
+	
+	<div class="top_menu">
+		<div class="home_link">
+		    <a href="welcome.html">
+		        <span class="icon"><i class="fas fa-home"></i></span>
+		        <span>Home</span>
+		    </a>
+		</div>
+	</div>
 	<table id="preset_display">
 		<tr>
 		<th>Preset_ID</th>
@@ -120,12 +129,10 @@ finally
 	
 }
 	%>	
-
-
 	</table>
-	<div>
+	<div">
 		<p><label for="imageLoad" style="cursor: pointer;" class="displaypresetjsp">Upload Image</label></p>
-		<input type="file" id="imageLoad" name="imageLoad" accept="image/*" onchange="onload"
+		<input class="displaypresetjsp" type="file" id="imageLoad" name="imageLoad" accept="image/*" onchange="onload"
 			style="display: none;">
 	</div>
 	
@@ -133,10 +140,11 @@ finally
 	
 	
 	</canvas>
-	<form method="POST" action="BlurImage" enctype="multipart/form-data">
-	<input type="file" id="imageInput" name="imageInput" accept="image/*" />
-    <input type="submit" id="submit1" value="Add Image">    
-	
-	</form>
+		<div class="displaypresetjsp">
+			<form method="POST" action="BlurImage" enctype="multipart/form-data">
+					<input type="file" id="imageInput" name="imageInput" accept="image/*" />
+					<input type="submit" id="submit1" value="Add Image"> 
+			</form>
+		</div>
 </body>
 </html>

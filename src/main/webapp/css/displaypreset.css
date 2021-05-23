@@ -1,0 +1,36 @@
+.canvas1
+{
+	border: #12192C;
+  border-style: dashed ;
+  border-width:5px 5px 5px 5px;
+  height: 40%;
+  width: 30%;
+  
+  background-color:rgb(214, 209, 209);
+
+  margin-left : 40%;
+	
+}
+
+.displaypresetjsp {
+  margin-left: 40%;
+  background-color: #E52165;
+  border: none;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.top_menu .home_link a {
+	margin-left: 40%;
+	top: 5%;
+    background: #0D1137;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 3px;
+}

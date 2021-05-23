@@ -374,16 +374,3 @@ canvas
   to {top: 0; opacity: 1}
 }
 
-.canvas1
-{
-	border: #12192C;
-  border-style: dashed ;
-  border-width:5px 5px 5px 5px;
-  height: 40%;
-  width: 30%;
-  
-  background-color:rgb(214, 209, 209);
-
-  margin-left : 70%;
-	
-}
