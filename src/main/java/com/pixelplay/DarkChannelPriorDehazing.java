@@ -1,9 +1,20 @@
 package com.pixelplay;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -16,21 +27,23 @@ import org.opencv.imgproc.Imgproc;
 
 import com.pixelplay.Filter;
 
-public class DarkChannelPriorDehazing {
+@WebServlet("/dehaze")
+public class DarkChannelPriorDehazing extends HttpServlet{
 	
-	public String pathhhh;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	static {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 	}
-	public DarkChannelPriorDehazing(String image)
-	{
-		pathhhh=image;
-		
-	}
+	
 
 	public static final double krnlRatio = 0.01; // set kernel ratio
 	public static final double eps = 0.000001;
-	public Mat darkChannelDehazing(String imgPath, double krnlRatio, double minAtmosLight, double eps) {
+	public static Mat darkChannelDehazing(String imgPath, double krnlRatio, double minAtmosLight, double eps) {
 		Mat image = Imgcodecs.imread(imgPath, Imgcodecs.IMREAD_COLOR);
 		image.convertTo(image, CvType.CV_32F);
 		// extract each color channel
@@ -85,6 +98,35 @@ public class DarkChannelPriorDehazing {
 		Core.subtract(channel, t_, channel);
 		Core.divide(channel, t, channel);
 		return channel;
+	}
+	
+	public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException
+	{
+		String path="";
+		path=(String)(request.getAttribute(path));
+		 
+		 DarkChannelPriorDehazing d ;
+		//File f = new File(path);
+		//BufferedImage b_in = ImageIO.read(f);
+		Mat image = Imgcodecs.imread(path, Imgcodecs.IMREAD_COLOR);
+		double minAtmosLight = 240.0; // set minimum atmospheric light
+		Mat outval = darkChannelDehazing(path, krnlRatio, minAtmosLight, eps);
+		BufferedImage bufImage = null;
+		int type = BufferedImage.TYPE_BYTE_GRAY;
+		if (outval.channels() > 1) {
+			type = BufferedImage.TYPE_3BYTE_BGR;
+		}
+		int bufferSize = outval.channels() * outval.cols() * outval.rows();
+		byte[] b = new byte[bufferSize];
+		outval.get(0, 0, b); // get all the pixels
+		bufImage = new BufferedImage(outval.cols(), outval.rows(), type);
+		final byte[] targetPixels = ((DataBufferByte) bufImage.getRaster().getDataBuffer()).getData();
+		System.arraycopy(b, 0, targetPixels, 0, b.length);
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		ImageIO.write(bufImage, "jpg", output);
+		String b64 = Base64.getEncoder().encodeToString(output.toByteArray());
+		request.setAttribute("url", b64);
+		getServletContext().getRequestDispatcher("/dehazeResult.jsp").forward(request, response);
 	}
 
 }

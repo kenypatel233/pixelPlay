@@ -144,7 +144,7 @@ public class BlurEffect {
             e.printStackTrace();
         }
 
-        return null;
+        return bi;
     }
 }
 

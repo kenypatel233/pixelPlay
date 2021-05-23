@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import com.pixelplay.BlurEffect;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -31,23 +32,27 @@ public class BlurImage extends HttpServlet {
 		    fileName = part.getSubmittedFileName();
 		    part.write(uploadPath + File.separator + fileName);
 		}
-		response.getWriter().print(fileName+"uploaded! ");
+		String path=uploadPath + File.separator + fileName;
+		//response.getWriter().print(fileName+"uploaded! "+uploadPath+File.separator+fileName);
 		request.setAttribute("path",uploadPath+File.separator+fileName );
-		getServletContext().getRequestDispatcher("/blur.jsp").forward(request, response);
-	}
-		
+		getServletContext().getRequestDispatcher("/dehaze").forward(request, response);
+		//doGet(request,response);
 	}
 	
+}
+/*
+	
 	 
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		response.setContentType("image/jpeg");
 
-		String pathToWeb = getServletContext().getRealPath(File.separator);
-		Part part = request.getPart("imageInput");	
+		//String pathToWeb = getServletContext().getRealPath(File.separator);
+		//Part part = request.getPart("imageInput");	
 		
-		File f = new File(pathToWeb + "avajavalogo.jpg");
+		File f = new File((String) request.getAttribute("path"));
 		BufferedImage bi = ImageIO.read(f);
+		BufferedImage blur=
 		OutputStream out = response.getOutputStream();
 		ImageIO.write(bi, "jpg", out);
 		out.close();
