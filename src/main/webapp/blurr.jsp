@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Blur Result</title>
 </head>
 
 
@@ -25,13 +25,32 @@ ImageIO.write(b_in,"jpg",o);
 String ob64 = Base64.getEncoder().encodeToString(o.toByteArray());
 
 %>
-<p>Original</p>
+<table>    
+<b>Original</b>
+
+
 <img src="data:image/jpg;base64,<%=ob64 %>" alt="origin" />
-<br>
-<p>Blur Image</p>
-<img src="data:image/jpg;base64,<%=b64 %>" alt="image" />
-<button> Download </button>
+
+<b>Blur Effect</b>
+<a href="pixel-play.jpg" download>
+<img src="data:image/jpg;base64,<%=b64 %>" alt="image" id="myimg"/></a>
+
+
+
+
+
+
+<script>
+function download(){  
+	  // get canvas data  
+	  canvas=document.getElementById("myimg");
+	  var image = canvas.src;
+
+	  // create temporary link  
+	  
+	}
+</script>
 <body>
 
-</body>
+</body> 
 </html>

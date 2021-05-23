@@ -140,11 +140,6 @@ finally
 	
 	
 	</canvas>
-		<div class="displaypresetjsp">
-			<form method="POST" action="BlurImage" enctype="multipart/form-data">
-					<input type="file" id="imageInput" name="imageInput" accept="image/*" />
-					<input type="submit" id="submit1" value="Add Image"> 
-			</form>
-		</div>
+		
 </body>
 </html>

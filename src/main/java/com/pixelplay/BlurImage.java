@@ -35,7 +35,7 @@ public class BlurImage extends HttpServlet {
 		String path=uploadPath + File.separator + fileName;
 		//response.getWriter().print(fileName+"uploaded! "+uploadPath+File.separator+fileName);
 		request.setAttribute("path",uploadPath+File.separator+fileName );
-		getServletContext().getRequestDispatcher("/dehaze").forward(request, response);
+		getServletContext().getRequestDispatcher("/blurr.jsp").forward(request, response);
 		//doGet(request,response);
 	}
 	

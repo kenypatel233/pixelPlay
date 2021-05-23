@@ -376,7 +376,7 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+ btn.onclick = function() {
   modal.style.display = "block";
 }
 
@@ -391,6 +391,8 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
 
 
 
@@ -423,44 +425,34 @@ let add=function()
   });
   
 }
+console.log("reached");
 
-// ======================== VIGNETTE ========================
+/*======Blur Modal======*/
+// Get the modal
+var modal1 = document.getElementById("myModal1");
 
-// function mySection()
-// {
-//   console.log("inside callwedscfsr");
-//   document.getElementById("vignette").className.replace("","active");
-//   var section= document.getElementById("vignette_section");
-// if (section.style.display == 'none') {
-//   section.style.display = 'block';
-// } else {
-//   section.style.display = 'none';
-// }
-// }
+// Get the button that opens the modal
+var btnbtn = document.getElementById("btnbtn");
 
-// function applyVignette()
-// {
-//   var container = document.getElementById('myCanvas');
-//   container.classList.add('vignette_on');
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close1")[0];
 
-//   console.log("called2");	
-//   let target=document.getElementById("canvasDiv");
-  
-//   target.classList.add("vignette");
-// }
+// When the user clicks the button, open the modal 
+btnbtn.onclick = function() {
+  console.log("inside click");
+  modal1.style.display = "block";
+}
 
-// function myVignette()
-// {
-//   console.log("inside");
-//   console.log("inside callwedscfsr");
-//   document.getElementById("vignette").className.replace("","active");
-//   var section= document.getElementById("vignette_section");
-// if (section.style.display == 'none') {
-//   section.style.display = 'block';
-// } else {
-//   section.style.display = 'none';
-// }
-// }
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal.style.display = "none";
+  }
+}
 
 
