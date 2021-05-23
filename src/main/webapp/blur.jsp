@@ -20,7 +20,11 @@
 </head>
 <body>
 <% 
-String path= request.getParameter("url");
+
+
+String path= (String)request.getAttribute("path");
+//BufferedImage b_in = ImageIO.read(f);
+//String path= request.getParameter("url");
  final double krnlRatio = 0.01; // set kernel ratio
  final double eps = 0.000001;
  DarkChannelPriorDehazing d = new DarkChannelPriorDehazing(path);
