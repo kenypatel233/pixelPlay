@@ -146,5 +146,88 @@ finally
 					<input type="submit" id="submit1" value="Add Image"> 
 			</form>
 		</div>
+		<div class="slider_container">
+			<div id="brightness_section" style="padding-left: 20%; padding-top:3%">
+	               <form id="brightness_form" name="brightness_form">
+	                   <label style="padding-left:10%; padding-top: 5%; font-size: 20px;">Brightness:</label>
+	                   <div class="range">
+	                       <div id="brightness_label" class="sliderValue">
+	                           <span>0</span>
+	                       </div>
+	                       <div class="field">
+	                           <div class="value left">
+	                               -50</div>
+	                           <input class="rangeslider" id="rangeBrightness" type="range" min="-50" max="50" value="0" steps="1"
+	                               oninput="document.getElementById('brightness_label').innerHTML = this.value" />
+	                           <div class="value right">
+	                               50
+	                           </div>
+	                       </div>
+	                   </div>
+	                   <input class="applybutton" type="button" value="Apply" onclick="applyBrightness()" />
+	               </form>
+	           </div>
+	           <div id="contrast_section" style="padding-left: 60%">
+	           	   <form id="contrast_form" name="contrast_form">
+	                   <label style="padding-left:10%; padding-top: 5%; font-size: 20px;">Contrast:</label>
+	                   <div class="range">
+	                       <div id="contrast_label" class="sliderValue">
+	                           <span>0</span>
+	                       </div>
+	                       <div class="field">
+	                           <div class="value left">
+	                               -50</div>
+	                           <input class="rangeslider" id="rangeContrast" type="range" min="-50" max="50" value="0" steps="1"
+	                               oninput="document.getElementById('contrast_label').innerHTML = this.value" />
+	                           <div class="value right">
+	                               50
+	                           </div>
+	                       </div>
+	                   </div>
+	                   <input class="applybutton" type="button" value="Apply" onclick="applyContrast()" />
+	               </form> 
+	           </div>
+	           <div id="saturation_section" style="padding-left:20%">
+	               <form id="saturation_form" name="saturation_form">
+	                   <label style="padding-left:10%; padding-top: 5%; font-size: 20px;">Saturation:</label>
+	                       <div class="range">
+	                           <div id="saturation_label" class="sliderValue">
+	                               <span>0</span>
+	                           </div>
+	                           <div class="field">
+	                               <div class="value left">
+	                                   -50</div>
+	                               <input class="rangeslider" id="rangeSaturation" type="range" min="-50" max="50" value="0" steps="1"
+	                                   oninput="document.getElementById('saturation_label').innerHTML = this.value" />
+	                               <div class="value right">
+	                                   50
+	                               </div>
+	                           </div>
+	                       </div>
+	                       <input class="applybutton" type="button" value="Apply" onclick="applySaturation()" />
+	               </form>
+	           </div>
+	           <div id="opacity_section" style="padding-left: 60%;">
+	               <form id="opacity_form" name="opacity_form">
+	                   <label style="padding-left:10%; padding-top: 5%; font-size: 20px;">Opacity:</label>
+	                       <div class="range">
+	                           <div id="opacity_label" class="sliderValue">
+	                               <span>0</span>
+	                           </div>
+	                           <div class="field">
+	                               <div class="value left">
+	                                   -50</div>
+	                               <input class="rangeslider" id="rangeOpacity" type="range" min="-50" max="50" value="0" steps="1"
+	                                   oninput="document.getElementById('opacity_label').innerHTML = this.value" />
+	                               <div class="value right">
+	                                   50
+	                               </div>
+	                           </div>
+	                       </div>
+	                       <input class="applybutton" type="button" value="Apply" onclick="applyOpacity()" />
+	               </form>
+	           </div>
+           </div>
+		
 </body>
 </html>
