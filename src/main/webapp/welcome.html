@@ -153,13 +153,24 @@
                                 <input class="applybutton" type="button" value="Apply" onclick="applyBrightness()" />
                             </form>
                         </div>
-                        <div id="contrast_section" style="display: none;">               
+                        <div id="contrast_section" style="display: none;">
                             <form id="contrast_form" name="contrast_form">
-                                <label style="padding-right:20px;">Contast:</label>
-                                <input type="range" id="rangeContrast" value="0" min="0" max="5"
-                                    oninput="document.getElementById('contrast_label').innerHTML = this.value" />
-                                <label id="contrast_label" style="padding-left:20px;"></label>
-                                <input type="button" value="Apply" onclick="applyContrast()" />
+                                <label style="padding-left:20%; padding-top: 5%; font-size: 20px;">Contrast:
+                                    <div class="range">
+                                        <div id="contrast_label" class="sliderValue">
+                                            <span>0</span>
+                                        </div>
+                                        <div class="field">
+                                            <div class="value left">
+                                                -20</div>
+                                            <input class="rangeslider" id="rangeContrast" type="range" min="-20" max="20" value="0" steps="1"
+                                                oninput="document.getElementById('contrast_label').innerHTML = this.value" />
+                                            <div class="value right">
+                                                20
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input class="applybutton" type="button" value="Apply" onclick="applyContrast()" />
                             </form>
                         </div>
                         <div id="saturation_section" style="display: none;">

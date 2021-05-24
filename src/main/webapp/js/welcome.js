@@ -236,9 +236,14 @@ function applyContrast() {
     rangeInput = document.getElementById('rangeContrast').value;
     console.log("inside" + rangeInput);
     container = document.getElementById('myCanvas');
-    Caman(container,function()
-    {
-        this.contrast(rangeInput).render;
+    Caman(container,function() {
+        this.newLayer(function() {
+          this.setBlendingMode("multiply");
+          this.copyParent();
+          this.filter.contrast(rangeInput);
+          this.opacity(10);
+        })
+        this.render();
     });
     //container.getContext("2d").save();
    //SessionImage.src=container.toDataURL("image/jpeg");
