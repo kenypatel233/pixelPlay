@@ -10,12 +10,15 @@ function cPush() {
 function cUndo() {
   console.log("Undo");
   if (cStep > 0) {
-      cStep--;
-      var canvasPic = new Image();
-      canvasPic.src = cPushArray[cStep];
-      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+    cStep--;
+    var canvasPic = new Image();
+    canvasPic.src = cPushArray[cStep];
+    canvasPic.onload = function () { 
+      ctx.drawImage(canvasPic, 0, 0); 
+    }
   }
 }
+
 function cRedo() {
   if (cStep < cPushArray.length-1) {
       cStep++;
@@ -26,15 +29,15 @@ function cRedo() {
 }
 
 /*=========UPLOADING IMAGE TO CANVAS ELEMENT=============*/
-var onload=function(e){
-let imgInput = document.getElementById('imageInput');
+var onload=function(e) {
+  let imgInput = document.getElementById('imageInput');
   imgInput.addEventListener('change', function(e) {
     if(e.target.files) {
       let imageFile = e.target.files[0]; //here we get the image file
       var reader = new FileReader();
       reader.readAsDataURL(imageFile);
       reader.onloadend = function (e) {
-       let myImage = new Image(); // Creates image object
+        let myImage = new Image(); // Creates image object
         myImage.src = e.target.result; // Assigns converted image to image object
         myImage.onload = function(ev) {
           var myCanvas = document.getElementById("myCanvas"); // Creates a canvas object
@@ -45,56 +48,42 @@ let imgInput = document.getElementById('imageInput');
           let imgData = myCanvas.toDataURL("image/jpeg",0.75); // Assigns image base64 string in jpeg format to a variable
           ctx=myCanvas.getContext("2d");
           cPush();
-
           SessionImage.src=imgData;
-          
-          
-          
-          
         }
       }
     }
-  })};
+  })
+};
 
   
 /*============AJAX ADD IMAGE TO DB=================*/
-
-
 let form = $('uploadForm');
 $(document).on('submit', '#uploadForm', function(event){
-
-
-   $.ajax({
-type: form.attr('method'),
-url: form.attr('action'),
-data: form.serialize(),
-success: function (responseText) {
-var result=responseText;
-$('#uploadResult').text(responseText.msg);
-console.log("end");
- 
-}
- 
+  $.ajax({
+    type: form.attr('method'),
+    url: form.attr('action'),
+    data: form.serialize(),
+    success: function (responseText) {
+      var result=responseText;
+      $('#uploadResult').text(responseText.msg);
+      console.log("end");
+    }
+  }
+  );
+  event.preventDefault();
 });
- event.preventDefault();
-  
-});
+
 /*================AJAX PRESET ADD=============**/
 /*================AJAX PRESET ADD=============*/
 let form1=$('preset_form');
 $(document).on('submit', '#preset_form', function(event){
-  
-
-
-
-    $.ajax({
+  $.ajax({
       type: form1.attr('method'),
       url: form1.attr('action'),
       data:form1.serialize(),
       success:function(data)
       {
-       
-        alert("Preset Added!");
+       alert("Preset Added!");
         location.reload();
       },
       error:function()
@@ -156,53 +145,46 @@ function crop()
   console.log("called");
   document.getElementById("crop").className.replace("","active");
   var section= document.getElementById("crop_section");
-if (section.style.display == 'none') {
-  section.style.display = 'block';
-} else {
-  section.style.display = 'none';
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
+  // initialize cropper by providing it with a target canvas and a XY ratio (height = width * ratio)
+  cropper.start(document.getElementById("myCanvas"), 1); 
+  cropper.showImage(SessionImage.src);
+  cPush();
 }
 
-// initialize cropper by providing it with a target canvas and a XY ratio (height = width * ratio)
-cropper.start(document.getElementById("myCanvas"), 1); 
-cropper.showImage(SessionImage.src);
-cPush();
-
-}
-function rotate()
-{
-  
+function rotate() {
   document.getElementById("rotate").className.replace("","active");
   var section= document.getElementById("rotate_section");
-if (section.style.display == 'none') {
-  section.style.display = 'block';
-} else {
-  section.style.display = 'none';
+  if (section.style.display == 'none') {
+    section.style.display = 'block';
+  } else {
+    section.style.display = 'none';
+  }
 }
-}
+
 function applyRotation() {
-
- angle=(document.getElementById("rotate_label").innerHTML)*0.01745; 
- myc=document.getElementById("myCanvas");
- var surfaceContext= myc.getContext("2d");
- //document.getElementById("myCanvas").getContext("2d");
- ctx=surfaceContext;
- ctx.save();
+  angle=(document.getElementById("rotate_label").innerHTML)*0.01745; 
+  myc=document.getElementById("myCanvas");
+  var surfaceContext= myc.getContext("2d");
+  //document.getElementById("myCanvas").getContext("2d");
+  ctx=surfaceContext;
+  ctx.save();
  
- surfaceContext.save();
- surfaceContext.fillStyle = "#ffffff";  
- surfaceContext.fillRect(0, 0, myc.width, myc.height);  
-surfaceContext.translate(SessionImage.width*0.5,SessionImage.height*0.5);
-surfaceContext.rotate(angle);
-surfaceContext.translate(-SessionImage.width*0.5,-SessionImage.height*0.5);
-surfaceContext.drawImage(SessionImage,0,0);
-cPush();
-//SessionImage.src=myc.toDataURL("image/jpeg",0.75);
-//surfaceContext.restore();
+  surfaceContext.save();
+  surfaceContext.fillStyle = "#ffffff";  
+  surfaceContext.fillRect(0, 0, myc.width, myc.height);  
+  surfaceContext.translate(SessionImage.width*0.5,SessionImage.height*0.5);
+  surfaceContext.rotate(angle);
+  surfaceContext.translate(-SessionImage.width*0.5,-SessionImage.height*0.5);
+  surfaceContext.drawImage(SessionImage,0,0);
+  cPush();
+  //SessionImage.src=myc.toDataURL("image/jpeg",0.75);
+  //surfaceContext.restore();
 }
-
-
-
-
 
   
 function brightness() {
@@ -216,27 +198,18 @@ function brightness() {
   }
 }
 
- //New brightness function
- function applyBrightness()
-  {
-    rangeInput = document.getElementById('rangeBrightness').value;
-    console.log("inside" + rangeInput);
-    container = document.getElementById('myCanvas');
-    Caman(container,function(){
-     this.brightness(rangeInput).render();
-   });
-   //container.getContext("2d").save();
-   //SessionImage.src=container.toDataURL("image/jpeg");
-   cPush();
- }
-
-
-
-// function applyBrightness() {
-//   rangeInput = document.getElementById('rangeBrightness');
-//   container = document.getElementById('myCanvas');
-//   container.style.filter = "brightness(" + rangeInput.value + "%)";
-// }
+function applyBrightness()
+{
+  rangeInput = document.getElementById('rangeBrightness').value;
+  console.log("inside" + rangeInput);
+  container = document.getElementById('myCanvas');
+  Caman(container,function(){
+    this.brightness(rangeInput).render();
+  });
+  //container.getContext("2d").save();
+  //SessionImage.src=container.toDataURL("image/jpeg");
+  cPush();
+}
 
 function contrast() {
   console.log("called brightness");
@@ -323,7 +296,7 @@ function opacity() {
 } 
 
 function applyOpacity() {
-    console.log("OPACITYYYYYYYYYYYY");
+    console.log("OPACITY");
     rangeInput = document.getElementById('rangeOpacity').value;
     console.log("inside" + rangeInput);
     container = document.getElementById('myCanvas');
@@ -378,16 +351,7 @@ function applyTemperature() {
    cPush();
 }
 
-
-// function applyOpacity() {
-//   rangeInput = document.getElementById('rangeOpacity');
-//   container = document.getElementById('myCanvas');
-//   container.style.filter = "opacity(" + rangeInput.value + "%)";
-// }
-
-
-
-/*======preset Modal======*/
+/*======PRESET Modal======*/
 // Get the modal
 var modal = document.getElementById("myModal");
 

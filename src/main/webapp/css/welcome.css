@@ -248,10 +248,6 @@ body{
 .range{
   height: 80px;
   width: 380px;
-  /* background: #fff;
-  border-radius: 10px;
-  padding: 0 65px 0 45px;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.1); */
 }
 
 .field{
@@ -337,11 +333,8 @@ canvas
 
 .save_revert
 {
-  
   margin-left:70%;
-  
   padding:7%;
-  
 }
 
 
