@@ -12,6 +12,72 @@
 <title>Presets</title>
 <link rel="stylesheet" href="./css/displaypreset.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+<script>
+
+function applyBrightness()
+{
+  rangeInput = document.getElementById('rangeBrightness').value;
+  console.log("inside" + rangeInput);
+  container = document.getElementById('myCanvas1');
+  Caman(container,function(){
+   this.brightness(rangeInput).render();
+ });
+ //container.getContext("2d").save();
+ //SessionImage.src=container.toDataURL("image/jpeg");
+ //cPush();
+}
+function applyContrast() {
+    rangeInput = document.getElementById('rangeContrast').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas1');
+    Caman(container,function() {
+        this.newLayer(function() {
+          this.setBlendingMode("multiply");
+          this.copyParent();
+          this.filter.contrast(rangeInput);
+          this.opacity(10);
+        })
+        this.render();
+    });
+    //container.getContext("2d").save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   //cPush();
+    
+}
+
+function applySaturation() {
+    rangeInput = document.getElementById('rangeSaturation').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas1');
+    Caman(container,function(){
+     this.saturation(rangeInput).render();
+   });
+   //container.getContext("2d").save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   //cPush();
+}
+function applyOpacity() {
+    console.log("OPACITYYYYYYYYYYYY");
+    rangeInput = document.getElementById('rangeOpacity').value;
+    console.log("inside" + rangeInput);
+    container = document.getElementById('myCanvas1');
+    Caman(container,function() {
+      this.newLayer(function() {
+        this.setBlendingMode("multiply");
+        this.opacity(rangeInput);
+        this.copyParent();
+      });
+      this.render();
+   });
+   //container.getContext().save();
+   //SessionImage.src=container.toDataURL("image/jpeg");
+   //cPush();
+}
+
+
+</script>
+
 <script>
 
 $(document).ready(function() {
@@ -130,7 +196,7 @@ finally
 }
 	%>	
 	</table>
-	<div">
+	<div>
 		<p><label for="imageLoad" style="cursor: pointer;" class="displaypresetjsp">Upload Image</label></p>
 		<input class="displaypresetjsp" type="file" id="imageLoad" name="imageLoad" accept="image/*" onchange="onload"
 			style="display: none;">
@@ -140,11 +206,7 @@ finally
 	
 	
 	</canvas>
-		<div class="displaypresetjsp">
-			<form method="POST" action="BlurImage" enctype="multipart/form-data">
-					<input type="file" id="imageInput" name="imageInput" accept="image/*" />
-					<input type="submit" id="submit1" value="Add Image"> 
-			</form>
+		
 		</div>
 		<div class="slider_container">
 			<div id="brightness_section" style="padding-left: 20%; padding-top:3%">
@@ -177,7 +239,7 @@ finally
 	                       <div class="field">
 	                           <div class="value left">
 	                               -50</div>
-	                           <input class="rangeslider" id="rangeContrast" type="range" min="-50" max="50" value="0" steps="1"
+	                           <input class="rangeslider" id="rangeContrast" type="range" min="-20" max="20" value="0" steps="1"
 	                               oninput="document.getElementById('contrast_label').innerHTML = this.value" />
 	                           <div class="value right">
 	                               50

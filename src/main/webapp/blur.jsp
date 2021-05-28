@@ -30,7 +30,7 @@ path=(String)(request.getAttribute(path));
 //BufferedImage b_in = ImageIO.read(f);
 Mat image = Imgcodecs.imread(path, Imgcodecs.IMREAD_COLOR);
 double minAtmosLight = 240.0; // set minimum atmospheric light
-Mat outval = d.darkChannelDehazing(path, krnlRatio, minAtmosLight, eps);
+Mat outval = DarkChannelPriorDehazing.darkChannelDehazing(path, krnlRatio, minAtmosLight, eps);
 BufferedImage bufImage = null;
 int type = BufferedImage.TYPE_BYTE_GRAY;
 if (outval.channels() > 1) {

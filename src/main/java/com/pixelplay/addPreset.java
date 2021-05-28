@@ -29,6 +29,7 @@ public class addPreset extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res)  throws ServletException, IOException 
 	{
+		System.out.print("inside");
 		String connectionURL = "jdbc:mysql://localhost:3306/project_pixelPlay";
 		String user = "root";
 		String pass = "keny@9180";
@@ -78,18 +79,6 @@ public class addPreset extends HttpServlet {
 			msg =" Some Error Occurred";
 		}
 		
-		Gson gson=new Gson();
-		JsonObject myObj = new JsonObject();
-		JsonElement message= gson.toJsonTree(msg);
-		myObj.add("msg", message);
-	
-		
-	    res.setContentType("application/json");
-		
-	    res.setCharacterEncoding("utf-8");
-		
-
-	    res.getWriter().write(myObj.toString());
 
 
 	    

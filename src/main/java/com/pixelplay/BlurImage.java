@@ -35,27 +35,9 @@ public class BlurImage extends HttpServlet {
 		String path=uploadPath + File.separator + fileName;
 		//response.getWriter().print(fileName+"uploaded! "+uploadPath+File.separator+fileName);
 		request.setAttribute("path",uploadPath+File.separator+fileName );
-		getServletContext().getRequestDispatcher("/dehaze").forward(request, response);
+		getServletContext().getRequestDispatcher("/blurr.jsp").forward(request, response);
 		//doGet(request,response);
 	}
 	
 }
-/*
-	
-	 
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		response.setContentType("image/jpeg");
-
-		//String pathToWeb = getServletContext().getRealPath(File.separator);
-		//Part part = request.getPart("imageInput");	
-		
-		File f = new File((String) request.getAttribute("path"));
-		BufferedImage bi = ImageIO.read(f);
-		BufferedImage blur=
-		OutputStream out = response.getOutputStream();
-		ImageIO.write(bi, "jpg", out);
-		out.close();
-
-	}
-}*/

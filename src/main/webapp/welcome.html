@@ -22,7 +22,7 @@
                     <div class="home_link">
                         <a href="displayPresets.jsp">
                             <span class="icon"><i class="fas fa-plus"></i></span>
-                            <span>Add Preset</span>
+                            <span>View Preset</span>
                         </a>
                     </div>
                     <div class="right_info">
@@ -69,10 +69,11 @@
                                     <span class="icon"><i class="fas fa-thermometer-empty"></i></span>
                                     <span class="title">Temperature</span>
                                 </a></li>
-                            <li id="blur" class=""> <a href="#" onclick="blur()" >
+                             <li id="blur" class=""> <a href="#" id="btnbtn" onclick="document.getElementById('myModal1').style.display='block'" >
                                     <span class="icon"><i class="fas fa-tint"></i></span>
                                     <span class="title">Blur</span>
                                 </a></li>
+                                
                             <li id="preset" class=""><a href="#" id="myBtn">
                                     <span class="icon"><i class="fas fa-sliders-h"></i></span>
                                     <span class="title">Add PRESET</span>
@@ -245,27 +246,27 @@
                             <div class="modal-body">
                                 <form id="preset_form" action="addPreset" method="POST" >
                                     <label style="padding-right:20px;">Brightness:</label>
-                                    <input type="range" id="rangeBrightnesss" name="rangeBrightnesss" value="180" min="0" max="360"
+                                    <input type="range" id="rangeBrightnesss" name="rangeBrightnesss" value="0" min="-50" max="50"
                                         oninput="document.getElementById('brightness_labell').innerHTML = this.value" />
                                     <label id="brightness_labell" style="padding-left:20px;"></label>
                                     <br>
 
                                     <label style="padding-right:20px;">Contrast:</label>
-                                    <input type="range" id="rangeContrastt" name="rangeContrastt" value="180" min="0" max="360"
+                                    <input type="range" id="rangeContrastt" name="rangeContrastt" value="0" min="-20" max="20"
                                         oninput="document.getElementById('contrast_labell').innerHTML = this.value" />
                                     <br>
                             
                                     <label id="contrast_labell" style="padding-left:20px;"></label>
                                     <br>
                                     <label style="padding-right:20px;">Saturation:</label>
-                                    <input type="range" id="rangeSaturationn" name="rangeSaturationn" value="180" min="0" max="360"
+                                    <input type="range" id="rangeSaturationn" name="rangeSaturationn" value="0" min="-50" max="50"
                                         oninput="document.getElementById('saturation_labell').innerHTML = this.value" />
                                 
                                     <label id="saturation_labell" style="padding-left:20px;"></label>
                                     <br>
                             
                                     <label style="padding-right:20px;">Opacity:</label>
-                                    <input type="range" id="rangeOpacityy" name="rangeOpacityy" value="180" min="0" max="360"
+                                    <input type="range" id="rangeOpacityy" name="rangeOpacityy" value="0" min="-50" max="50"
                                         oninput="document.getElementById('opa_labell').innerHTML = this.value" />                                             
                                     <label id="opa_labell" style="padding-left:20px;"></label>
                                     <br>
@@ -277,6 +278,26 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ======= BLUR ========== -->
+                   <div id="myModal1" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close1" onclick="document.getElementById('myModal1').style.display='none'">&times;</span>
+                            <h2>Blur </h2>
+                        </div>
+                        <div class="modal-body">
+                            <form id="blur_form" action="BlurImage" method="POST" enctype="multipart/form-data">
+                                <input type="file" id="imageInput" name="imageInput" accept="image/*" />
+                                <br>
+                                <pre>                                                
+					                        <input type="submit" id="submit1" value="Apply Effect"> 
+                            </pre>
+                            </form>
+                        </div>
+                    
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

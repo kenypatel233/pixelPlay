@@ -80,30 +80,47 @@ console.log("end");
   
 });
 /*================AJAX PRESET ADD=============**/
+/*================AJAX PRESET ADD=============*/
 let form1=$('preset_form');
-$(document).on('submit','#preset_form',function(event){
-  event.preventDefault(); 
+$(document).on('submit', '#preset_form', function(event){
+  
+
 
 
     $.ajax({
       type: form1.attr('method'),
       url: form1.attr('action'),
       data:form1.serialize(),
-      contentType:"json",
-      
       success:function(data)
       {
-      	
-        alert("Successfully added Preset!");
+       
+        alert("Preset Added!");
+        location.reload();
       },
       error:function()
       {
         alert("Failed to add preset");
-      },
-      
-    })
-
+      }
+    });
+//event.preventDefault();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*============Save-Revert==========
 
 save=function()
@@ -398,74 +415,6 @@ window.onclick = function(event) {
 }
 
 
-
-let add=function()
- {
-  $(document).on('click','#addThePreset',function(event){
-    
-    dataString=$('#preset_form').serialize();
-    
-  
-  
-      $.ajax({
-        type: "POST",
-        url: "addPreset",
-        data:dataString,
-        contentType:"json",
-        
-        success:function(data)
-        {
-          
-          alert(data.msg);
-        },
-        error:function()
-        {
-          alert("Failed to add preset");
-        },
-        
-      })
-  
-  });
-  
-}
-
-// ======================== VIGNETTE ========================
-
-// function mySection()
-// {
-//   console.log("inside callwedscfsr");
-//   document.getElementById("vignette").className.replace("","active");
-//   var section= document.getElementById("vignette_section");
-// if (section.style.display == 'none') {
-//   section.style.display = 'block';
-// } else {
-//   section.style.display = 'none';
-// }
-// }
-
-// function applyVignette()
-// {
-//   var container = document.getElementById('myCanvas');
-//   container.classList.add('vignette_on');
-
-//   console.log("called2");	
-//   let target=document.getElementById("canvasDiv");
-  
-//   target.classList.add("vignette");
-// }
-
-// function myVignette()
-// {
-//   console.log("inside");
-//   console.log("inside callwedscfsr");
-//   document.getElementById("vignette").className.replace("","active");
-//   var section= document.getElementById("vignette_section");
-// if (section.style.display == 'none') {
-//   section.style.display = 'block';
-// } else {
-//   section.style.display = 'none';
-// }
-// }
 
 
 
